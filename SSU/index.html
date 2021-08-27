@@ -1,341 +1,39 @@
-<!DOCTYPE html>
-<head><meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="author" content="Johnny G. McCracken" />
-<title>SongSetUp</title>
-<style type="text/css" media="all"> 
-/* <![CDATA[ */ 
-* {font-family:Arial, sans; box-sizing:border-box;} 
-body {margin:0px; padding:0px; background-color:white; color:black;} 
-h1,h2,h3,h4 {text-align:center; margin:0px; padding:0px;} 
-h2 {margin:0px 0px 15px 0px;} 
-h3 {margin:0px 0px 15px 0px; padding: 5px; border:3px solid black; background-color:#ddd;} 
-h4 {margin:10px 0px 0px 0px;} 
-p {padding:5px 0px 0px 0px; line-height:1.25em;} 
-li {color:white; list-style-position:outside;} 
-li a {color:white; padding-left:-25px; margin-left:-25px; cursor:pointer;} 
-section {width: 100%; height:auto; margin-top:40px;} 
-fieldset, fieldset ol li {font-size:small; color:black;} 
-legend {font-weight:bold; color:blue;} 
-table {width:auto;} 
-input[type="number"],select {text-align:right; height:22px;} 
-input[type="button"] {font-size:12pt; font-weight:normal; text-align:center; margin:15px 0px 0px 0px; width:100%; height:25px;} 
-blue {color:blue;} 
-gray {color:gray; font-weight:normal;} 
-div.menubar {background-color:black; text-align:left; margin-bottom:15px; padding:0px 5px 0px 10px; height:40px;} 
-svg {margin:0px; padding:0px;} 
-polygon, circle, rect, ellipse {fill:#ffffcc; stroke:black; stroke-width:0.5;} 
-line, polyline {fill:black; stroke:black; stroke-width:0.5;} 
-#APP10000reasons,#APPallwhoarethirsty,#APPamazinggrace,#APPbetterthanahallelujah,#APPbreathe,#APPcityofgod,#APPcomenowisthetimetoworship,#APPcometothewater,#APPcompanionsonthejourney,#APPfamilyprayersong,#APPforever,#APPhailmarygentlewoman,#APPhereiamlord,#APPhereiamtoworship,#APPholyground,#APPholyishisname,#APPholyisthelord,#APPiam,#APPiamthebreadoflife,#APPiamthevine,#APPifgodisforus,#APPigivemyselfaway,#APPihavedecidedtofollowjesus,#APPiloveyoulord,#APPinthisplace,#APPisurrender,#APPleadmelord,#APPletthefirefall,#APPlettheriverflow,#APPlordiliftyournameonhigh,#APPlordineedyou,#APPmealprayer,#APPonebreadonebody,#APPopentheeyesofmyheart,#APPpraiseyouinthisstorm,#APPpreparetheway,#APPrevelationsong,#APPservantsong,#APPshepherdmeogod,#APPtheheartofworship,#APPtheservantsong,#APPtheyllknowwearechristians,#APPtradingmysorrows,#APPwefalldown,#APPweshallreceive,#APPwhoami,#APPwillingservant,#APPyouaremine,#APPyouknowwhoiam {display:none; vertical-align:top;} 
-#APPhelp,#APPsongsetcontainer {display:none; vertical-align:top;} 
-#songspace {width:35px;margin-left:5px;} 
-.sidenav {height:100%; width:0px; position:fixed; z-index:1; top:0px; left:0px; background-color:#111; overflow-x:hidden; transition:0.1s; padding-top:15px;} 
-.sidenav a {padding: 5px 8px 5px 32px; text-decoration: none; font-size: 18px; color: #818181; display: block; transition: 0.1s} 
-.sidenav a:hover, .offcanvas a:focus{color: #f1f1f1;} 
-.sidenav .head {font-size:12px; text-align:left; margin-left:25px; color:white;} 
-@media screen and (max-height:450px) { 
-input[type="button"] {background-color:aqua;} 
-.sidenav {padding-top: 30px;} 
-.sidenav a {font-size: 18px;} 
-} 
-.w3-overlay{position:fixed;display:none;width:100%;height:100%;top:0;left:0;right:0;bottom:0;background-color:rgba(0,0,0,0.5);z-index:2} 
-.w3-animate-opacity{-webkit-animation:opac 0.8s;animation:opac 0.8s} 
-.ccsticky-nav {width:100%; height:40px; position:fixed; top:0; background:navy;} 
-.fl {float:left;} 
-.fr {float:right;} 
-.w300 {width:300px;} 
-.credits {font-size:8px; text-align:center; display:;} 
-.hidecredits {display:none;} 
-.chorus {color:blue; font-weight:bold;} 
-.bridge {color:blue;} 
-.sml {font-size:10pt;} 
-.tny {font-size:9pt;} 
-.blk {color:black;} 
-.nomarg {margin:0px;} 
-.nopad {padding:0px;} 
-.lft {text-align:left;} 
-.spacer {width:50px; height:50px;} 
-.brief {width:30px; margin-left:0px; font-size:10pt; text-align:right; display:inline-block;} 
-.mlist {display:inline-block; white-space:nowrap;} 
-.hi {padding:0px 0px 0px 35px; text-indent:-35px; margin:0px;} 
-.tac {text-align:center;} 
-.mark {background-color:white;} 
-hr {width:300px;} 
-@page {margin:0in 0in 0in; padding:0.25in 0in 0in 0in;} 
-@media print{ section {background:none;} 
-.ccsticky-nav,.menubar {display:none; background-color:none;} 
-h3 {margin-top:0in; padding:0in; border:none; color:black; background-color:none; text-align:center;} 
-h3.pbba {page-break-before:always; background-color:none;} 
-p {padding:0in; line-height:1.25em;} 
-.spacer {display:none;} 
-.chorus {color:black; font-weight:bold;} 
-.bridge {color:black; font-style:oblique;} 
-.credits {font-size:8px; text-align:center;} 
-.hidecredits {display:none;} 
-.hi {padding:0px 0px 0px 35px; text-indent:-35px; margin:0px;} 
-hr {width:300px;} 
-} 
-td.bge {text-align:center; vertical-align:middle; border:2px solid black; width:50px; height:50px; background-color:#cccccc; cursor:pointer; font-size:14pt;} 
-td.rem {text-align:center; vertical-align:middle; border:2px solid black; height:25px; background-color:#cccccc; cursor:pointer; font-size:9pt; font-weight:bold;} 
-input[type="color"][name="favcolor"] {width:47%; height:35px; margin:0px; padding:0px; border:2px solid black;} 
-input[type="color"][name="fontcolors"]  {width:65px; height:35px; margin:0px; padding:0px; border:2px solid black;} 
-#undo {font-size:9pt; border:2px solid black; padding:0px; font-weight:bold;} 
- /*]]>*/
-</style>
+<!DOCTYPE html><head><meta http-equiv="Content-type" content="text/html; charset=utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><meta name="author" content="Johnny G. McCracken" /><title>SongSetUp</title><style type="text/css" media="all"> /* <![CDATA[ */ * {font-family:Arial, sans; box-sizing:border-box;} body {margin:0px; padding:0px; background-color:white; color:black;} h1,h2,h3,h4 {text-align:center; margin:0px; padding:0px;} h2 {margin:0px 0px 15px 0px;} h3 {margin:0px 0px 15px 0px; padding: 5px; border:3px solid black; background-color:#ddd;} h4 {margin:10px 0px 0px 0px;} p {padding:5px 0px 0px 0px; line-height:1.25em;} li {color:white; list-style-position:outside;} li a {color:white; padding-left:-25px; margin-left:-25px; cursor:pointer;} section {width: 100%; height:auto; margin-top:40px;} fieldset, fieldset ol li {font-size:small; color:black;} legend {font-weight:bold; color:blue;} table {width:auto;} input[type="number"],select {text-align:right; height:22px;} input[type="button"] {font-size:12pt; font-weight:normal; text-align:center; margin:15px 0px 0px 0px; width:100%; height:25px;} blue {color:blue;} gray {color:gray; font-weight:normal;} div.menubar {background-color:black; text-align:left; margin-bottom:15px; padding:0px 5px 0px 10px; height:40px;} svg {margin:0px; padding:0px;} polygon, circle, rect, ellipse {fill:#ffffcc; stroke:black; stroke-width:0.5;} line, polyline {fill:black; stroke:black; stroke-width:0.5;} #APP10000reasons,#APPallwhoarethirsty,#APPamazinggrace,#APPbetterthanahallelujah,#APPbreathe,#APPcityofgod,#APPcomenowisthetimetoworship,#APPcometothewater,#APPcompanionsonthejourney,#APPfamilyprayersong,#APPforever,#APPhailmarygentlewoman,#APPhereiamlord,#APPhereiamtoworship,#APPholyground,#APPholyishisname,#APPholyisthelord,#APPiam,#APPiamthebreadoflife,#APPiamthevine,#APPifgodisforus,#APPigivemyselfaway,#APPihavedecidedtofollowjesus,#APPiloveyoulord,#APPinthisplace,#APPisurrender,#APPleadmelord,#APPletthefirefall,#APPlettheriverflow,#APPlordiliftyournameonhigh,#APPlordineedyou,#APPmealprayer,#APPonebreadonebody,#APPopentheeyesofmyheart,#APPpraiseyouinthisstorm,#APPpreparetheway,#APPrevelationsong,#APPservantsong,#APPshepherdmeogod,#APPtheheartofworship,#APPtheservantsong,#APPtheyllknowwearechristians,#APPtradingmysorrows,#APPwefalldown,#APPweshallreceive,#APPwhoami,#APPwillingservant,#APPyouaremine,#APPyouknowwhoiam {display:none; vertical-align:top;} #APPhelp,#APPsongsetcontainer {display:none; vertical-align:top;} #songspace {width:35px;margin-left:5px;} .sidenav {height:100%; width:0px; position:fixed; z-index:1; top:0px; left:0px; background-color:#111; overflow-x:hidden; transition:0.1s; padding-top:15px;} .sidenav a {padding: 5px 8px 5px 32px; text-decoration: none; font-size: 18px; color: #818181; display: block; transition: 0.1s} .sidenav a:hover, .offcanvas a:focus{color: #f1f1f1;} .sidenav .head {font-size:12px; text-align:left; margin-left:25px; color:white;} @media screen and (max-height:450px) { input[type="button"] {background-color:aqua;} .sidenav {padding-top: 30px;} .sidenav a {font-size: 18px;} } .w3-overlay{position:fixed;display:none;width:100%;height:100%;top:0;left:0;right:0;bottom:0;background-color:rgba(0,0,0,0.5);z-index:2} .w3-animate-opacity{-webkit-animation:opac 0.8s;animation:opac 0.8s} .ccsticky-nav {width:100%; height:40px; position:fixed; top:0; background:navy;} .fl {float:left;} .fr {float:right;} .w300 {width:300px;} .credits {font-size:8px; text-align:center; display:;} .hidecredits {display:none;} .chorus {color:blue; font-weight:bold;} .bridge {color:blue;} .sml {font-size:10pt;} .tny {font-size:9pt;} .blk {color:black;} .nomarg {margin:0px;} .nopad {padding:0px;} .lft {text-align:left;} .spacer {width:50px; height:50px;} .brief {width:30px; margin-left:0px; font-size:10pt; text-align:right; display:inline-block;} .mlist {display:inline-block; white-space:nowrap;} .hi {padding:0px 0px 0px 35px; text-indent:-35px; margin:0px;} .tac {text-align:center;} .mark {background-color:white;} hr {width:300px;} @page {margin:0in 0in 0in; padding:0.25in 0in 0in 0in;} @media print{ section {background:none;} .ccsticky-nav,.menubar {display:none; background-color:none;} h3 {margin-top:0in; padding:0in; border:none; color:black; background-color:none; text-align:center;} h3.pbba {page-break-before:always; background-color:none;} p {padding:0in; line-height:1.25em;} .spacer {display:none;} .chorus {color:black; font-weight:bold;} .bridge {color:black; font-style:oblique;} .credits {font-size:8px; text-align:center;} .hidecredits {display:none;} .hi {padding:0px 0px 0px 35px; text-indent:-35px; margin:0px;} hr {width:300px;} } td.bge {text-align:center; vertical-align:middle; border:2px solid black; width:50px; height:50px; background-color:#cccccc; cursor:pointer; font-size:14pt;} td.rem {text-align:center; vertical-align:middle; border:2px solid black; height:25px; background-color:#cccccc; cursor:pointer; font-size:9pt; font-weight:bold;} input[type="color"][name="favcolor"] {width:47%; height:35px; margin:0px; padding:0px; border:2px solid black;} input[type="color"][name="fontcolors"]  {width:65px; height:35px; margin:0px; padding:0px; border:2px solid black;} #undo {font-size:9pt; border:2px solid black; padding:0px; font-weight:bold;}  /*]]>*/
+</style></head><body><nav class="ccsticky-nav"><div class="menubar"><a href="#" style="float:left; padding-top:7px" onclick="openNav()"><svg width="24" height="24" viewBox="0 0 24 24" stroke="transparent" fill="white"><use xlink:href="#hamburger" /></svg></a></div></nav><div class="w3-overlay w3-animate-opacity" onclick="closeNav()" id="myOverlay"></div><div id="mySidenav" class="sidenav" style="z-index:5; scroll-behavior:no;"><h4 class="head">APPLICATION</h4><a href="#" onclick='showAPP("APPhelp")'>Settings</a>
+<a href="#" onclick='showAPP("APPsplash")'>About</a><br /><div id="masterset" style="margin:0px 0px 10px 0px; vertical-align:middle;"><h4 class="head">CREATE SONG SET</h4><input type="text" id="songsetlist" style="margin:15px 0px 2px 25px; width:70%; height:24px;" placeholder="Enter song numbers..." onchange="numbersOnlyMOBIL(this.value)" /><input type="button" value="OK" style="padding:0px 3px 0px 3px; margin:0px; width:auto; height:25px; text-align:center; vertical-align:middle;" onclick="createSongSet()" /><br /><br /></div><h4 class="head">SONG LIST</h4><ol><li><a href="#" onclick='showAPP("APP10000reasons")'>10,000 Reasons (Bless the Lord)</a></li><li><a href="#" onclick='showAPP("APPallwhoarethirsty")'>All Who Are Thirsty</a></li><li><a href="#" onclick='showAPP("APPamazinggrace")'>Amazing Grace</a></li><li><a href="#" onclick='showAPP("APPbetterthanahallelujah")'>Better Than A Hallelujah</a></li><li><a href="#" onclick='showAPP("APPbreathe")'>Breathe</a></li><li><a href="#" onclick='showAPP("APPcityofgod")'>City Of God</a></li><li><a href="#" onclick='showAPP("APPcomenowisthetimetoworship")'>Come, Now Is The Time To Worship</a></li><li><a href="#" onclick='showAPP("APPcometothewater")'>Come To The Water</a></li><li><a href="#" onclick='showAPP("APPcompanionsonthejourney")'>Companions On The Journey</a></li><li><a href="#" onclick='showAPP("APPfamilyprayersong")'>Family Prayer Song</a></li><li><a href="#" onclick='showAPP("APPforever")'>Forever</a></li><li><a href="#" onclick='showAPP("APPhailmarygentlewoman")'>Hail Mary, Gentle Woman</a></li><li><a href="#" onclick='showAPP("APPhereiamlord")'>Here I Am, Lord</a></li><li><a href="#" onclick='showAPP("APPhereiamtoworship")'>Here I Am To Worship</a></li><li><a href="#" onclick='showAPP("APPholyground")'>Holy ground</a></li><li><a href="#" onclick='showAPP("APPholyishisname")'>Holy Is His Name</a></li><li><a href="#" onclick='showAPP("APPholyisthelord")'>Holy Is The Lord</a></li><li><a href="#" onclick='showAPP("APPiam")'>I Am</a></li><li><a href="#" onclick='showAPP("APPiamthebreadoflife")'>I Am The Bread Of Life</a></li><li><a href="#" onclick='showAPP("APPiamthevine")'>I Am The Vine</a></li><li><a href="#" onclick='showAPP("APPifgodisforus")'>If God Is For Us</a></li><li><a href="#" onclick='showAPP("APPigivemyselfaway")'>I Give Myself Away</a></li><li><a href="#" onclick='showAPP("APPihavedecidedtofollowjesus")'>I Have Decided to Follow Jesus</a></li><li><a href="#" onclick='showAPP("APPiloveyoulord")'>I Love You Lord</a></li><li><a href="#" onclick='showAPP("APPinthisplace")'>In This Place</a></li><li><a href="#" onclick='showAPP("APPisurrender")'>I Surrender</a></li><li><a href="#" onclick='showAPP("APPleadmelord")'>Lead Me Lord</a></li><li><a href="#" onclick='showAPP("APPletthefirefall")'>Let The Fire Fall</a></li><li><a href="#" onclick='showAPP("APPlettheriverflow")'>Let The River Flow</a></li><li><a href="#" onclick='showAPP("APPlordiliftyournameonhigh")'>Lord I Lift Your Name On High</a></li><li><a href="#" onclick='showAPP("APPlordineedyou")'>Lord I Need You</a></li><li><a href="#" onclick='showAPP("APPmealprayer")'>Meal Prayer</a></li><li><a href="#" onclick='showAPP("APPopentheeyesofmyheart")'>Open The Eyes Of My Heart</a></li><li><a href="#" onclick='showAPP("APPonebreadonebody")'>One Bread, One Body</a></li><li><a href="#" onclick='showAPP("APPpraiseyouinthisstorm")'>Praise You In This Storm</a></li><li><a href="#" onclick='showAPP("APPpreparetheway")'>Prepare The Way</a></li><li><a href="#" onclick='showAPP("APPrevelationsong")'>Revelation Song</a></li><li><a href="#" onclick='showAPP("APPservantsong")'>Servant Song</a></li><li><a href="#" onclick='showAPP("APPshepherdmeogod")'>Shepherd Me, O God</a></li><li><a href="#" onclick='showAPP("APPtheheartofworship")'>The Heart Of Worship</a></li><li><a href="#" onclick='showAPP("APPtheservantsong")'>The Servant Song</a></li><li><a href="#" onclick='showAPP("APPtheyllknowwearechristians")'>They'll Know We Are Christians</a></li><li><a href="#" onclick='showAPP("APPtradingmysorrows")'>Trading My Sorrows</a></li><li><a href="#" onclick='showAPP("APPwefalldown")'>We Fall Down</a></li><li><a href="#" onclick='showAPP("APPweshallreceive")'>We Shall Receive</a></li><li><a href="#" onclick='showAPP("APPwhoami")'>Who Am I</a></li><li><a href="#" onclick='showAPP("APPwillingservant")'>Willing Servant</a></li><li><a href="#" onclick='showAPP("APPyouaremine")'>You Are Mine</a></li><li><a href="#" onclick='showAPP("APPyouknowwhoiam")'>You Know Who I Am</a></li><br /><br /><br /><br /></ol></div><form><section id="main-container"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="0" width="0"><symbol id="hamburger" width="24" height="24" viewBox="0 0 24 24"><path d="M24 6h-24v-4h24v4zm0 4h-24v4h24v-4zm0 8h-24v4h24v-4z"/></symbol></svg><div class="w3-overlay w3-animate-opacity" onclick="closeNav()" id="myOverlay"></div><div style="margin-left:0px; margin-right:0px; padding-left:10px; padding-right:10px;"><div id="APPsplash" name="APP"><center><h1><sub>&#9835;</sub><sup>&#9835;</sup><i>SongSetUp</i><sub>&#9835;</sub><sup>&#9835;</sup></h1><span id="ver" class="tny"></span><p class="sml">
+&copy; 2016, 2018, JOHNNY G. McCRACKEN.<br /><a href="mailto:j.g.mccracken65%40gmail.com?body=Greetings,%20&subject=SongSetUp%20v1.45c">j.g.mccracken65&#64;gmail.com</a>.<br />
+All rights reserved.
+</p><p class="w300 tny lft">
+All lyrics used as examples by this program are the property of their respective owner/copyright holders.<br /><br />
+This application is offered by the author strictly as a "proof of concept" example, and makes no claims as to its fitness for use.
+This application is free to use as long as proper recognition is given to its contributors and their notices are maintained.<br /><br />
+DEVICE: Samsung / Android 6.0.1<br /><br />
+Special thanks to W3Schools.com for the w3.js library.<br /><br />
+Let us sing and make a joyful noise to give thanks, praise and glory to our God.<br /><br /><i>Praying to God is good, singing to God is praying twice.</i></p></center></div>
 
-</head>
+<div id="APPhelp" name="APP"><h3>Settings</h3><fieldset><legend>Song Set Help</legend>
+To create a song set:
+<ol><li>Tap menu button at upper left.</li><li>Enter desired song numbers in the box.<br />(no numbers less than 1 or greater than <span id="limit"></span>)</li><li>Put a comma (,) dot (.) or space ( ) between each song number.</li><li>Press "OK"</li></ol><span style="margin-left:25px;"><b>Example:</b> 6,4,11,26,22,31 &ensp;(default)</span><br /><br /><b>Tip:</b> Lyric sheets for "Singles" or "Sets" may be printed directly from the browser.
+</fieldset><br /><fieldset><legend>Song Properties</legend><input type="checkbox" id="copyrights" name="copyrights" checked="true" onchange="credits=this.checked" /><label for="copyrights">Display copyright information.</label><br /></fieldset><br /><fieldset><legend>Song Set Properties <gray>(screen only)</gray></legend><select id="songspace" onchange="ssu.spacer()"><option selected>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option></select><label for="songspace"> space between songs (in inches).</label><br /></fieldset><br /><fieldset><legend>Font &amp; Background Colors <gray>(beta)</gray></legend><div id="testbody" style="width:97%;">
+To set a gradient on the background:
+<ol><li>Use the color buttons to change gradient colors.</li><li>Tap an arrow button to preview the gradient's fill.</li><li>Press "OK"</li></ol><center><table id="gradienteditor" cellspacing="3" cellpadding="0" border="0"><tr><td class="bge" colspan="3" style="border:none; padding:0px; background:none; height:38px;"><input id="gradientcolor1" type="color" name="favcolor" value="#E6E6FF" onchange="setSampleColors(); setBackgroundColorOnly()" title="Set background color" /> <input id="gradientcolor2" type="color" name="favcolor" value="#FFFFDB" onchange="setSampleColors(); bgChange()" title="Set gradient color" /></td></tr><tr><td class="bge" id="_315deg" name="gradientdir" onclick="setGradientDirection(this.id)">&#8662;</td><td class="bge" id="_0deg"   name="gradientdir" onclick="setGradientDirection(this.id)">&#8657;</td><td class="bge" id="_45deg"  name="gradientdir" onclick="setGradientDirection(this.id)">&#8663;</td></tr><tr><td class="bge" id="_270deg" name="gradientdir" onclick="setGradientDirection(this.id)">&#8656;</td><td class="bge" id="undo" onclick="setToBG()">APPLY</td><td class="bge" id="_90deg" name="gradientdir" onclick="setGradientDirection(this.id)">&#8658;</td></tr><tr><td class="bge" id="_225deg" name="gradientdir" onclick="setGradientDirection(this.id)">&#8665;</td><td class="bge" id="_180deg" name="gradientdir" onclick="setGradientDirection(this.id)">&#8659;</td><td class="bge" id="_135deg" name="gradientdir" onclick="setGradientDirection(this.id)">&#8664;</td></tr><tr><td class="rem" colspan="3" onclick="bgRemove()">REMOVE</td></tr></table><br /></center><b>Tip:</b> Set both buttons to the same color for a single color background (backgrounds do not print).<br /><br /><hr /><br />
+To change the "verse" or "chorus" colors:
+<ol><li>Tap color buttons to change the colors.</li><li>After the color editor opens make a selection.</li><li>Press the "&check;", "X", "Cancel" or "OK" button.</li></ol><center><p name="fontsample">This is the first line of the VERSE.<br />This is the second line.<br />This is the third line.<br />This is the fourth line.<br />This is the fifth line.</p><p name="fontsample" class="chorus"><b>This is the first line of the CHORUS.<br />This is the second line.<br />This is the third line.<br />This is the fourth line.</b></p></center><table align="center" cellspacing="3" cellpadding="0" style="width:auto; border-colapse:colapse;"><tr><th><b>Verse</b></th><th> </th><th><b>Chorus</b></th><tr><tr><td align="center"><input id="versecolor" name="fontcolors" type="color" value="#000000" onchange="changeVerseColor(this.value);" title="Set verse color" /></td><td class="rem" id="fontz" align="center" onclick="changeLyricColors();">&nbsp;APPLY&nbsp;</td><td align="center"><input id="choruscolor" name="fontcolors" type="color" value="#0000FF" onchange="changeChorusColor(this.value);" title="Set chorus color" /></td><tr><tr><td class="rem" colspan="3" onclick="defaultLyricColors();">REMOVE</td></tr></table><br /><b>Tip:</b> Preview the background first using the arrow buttons above. Note how the "verse" and "chorus" colors appear against the background before applying new selections.<br /><br /><b>WARNING! Do not make "Verse" or "Chorus" color the same as the background color!</b> (Reload to correct)
+<br /></div></fieldset><br /><fieldset><legend>Manage Set's <gray>(under developement)</gray></legend>
+PRIORITY: LOW<br />This feature will allow the user to maintain a Set-List locally (without cookies) and to load or edit it at any time.
+</fieldset><br /></div>
 
-<body>
-	<nav class="ccsticky-nav">
-		<div class="menubar">
-			<a href="#" style="float:left; padding-top:7px" onclick="openNav()">
-				<svg width="24" height="24" viewBox="0 0 24 24" stroke="transparent" fill="white"><use xlink:href="#hamburger" /></svg>
-			</a>
-		</div>
-	</nav>
-	<div class="w3-overlay w3-animate-opacity" onclick="closeNav()" id="myOverlay"></div>
-	<div id="mySidenav" class="sidenav" style="z-index:5; scroll-behavior:no;">
-		<h4 class="head">APPLICATION</h4><a href="#" onclick='showAPP("APPhelp")'>Settings</a>
-		<a href="#" onclick='showAPP("APPsplash")'>About</a>
-		<br />
-		<div id="masterset" style="margin:0px 0px 10px 0px; vertical-align:middle;">
-			<h4 class="head">CREATE SONG SET</h4><input type="text" id="songsetlist" style="margin:15px 0px 2px 25px; width:70%; height:24px;" placeholder="Enter song numbers..." onchange="numbersOnlyMOBIL(this.value)" />
-			<input type="button" value="OK" style="padding:0px 3px 0px 3px; margin:0px; width:auto; height:25px; text-align:center; vertical-align:middle;" onclick="createSongSet()" /><br /><br />
-		</div>
-		<h4 class="head">SONG LIST</h4>
-		<ol>
-			<li><a href="#" onclick='showAPP("APP10000reasons")'>10,000 Reasons (Bless the Lord)</a></li>
-			<li><a href="#" onclick='showAPP("APPallwhoarethirsty")'>All Who Are Thirsty</a></li>
-			<li><a href="#" onclick='showAPP("APPamazinggrace")'>Amazing Grace</a></li>
-			<li><a href="#" onclick='showAPP("APPbetterthanahallelujah")'>Better Than A Hallelujah</a></li>
-			<li><a href="#" onclick='showAPP("APPbreathe")'>Breathe</a></li>
-			<li><a href="#" onclick='showAPP("APPcityofgod")'>City Of God</a></li>
-			<li><a href="#" onclick='showAPP("APPcomenowisthetimetoworship")'>Come, Now Is The Time To Worship</a></li>
-			<li><a href="#" onclick='showAPP("APPcometothewater")'>Come To The Water</a></li>
-			<li><a href="#" onclick='showAPP("APPcompanionsonthejourney")'>Companions On The Journey</a></li>
-			<li><a href="#" onclick='showAPP("APPfamilyprayersong")'>Family Prayer Song</a></li>
-			<li><a href="#" onclick='showAPP("APPforever")'>Forever</a></li>
-			<li><a href="#" onclick='showAPP("APPhailmarygentlewoman")'>Hail Mary, Gentle Woman</a></li>
-			<li><a href="#" onclick='showAPP("APPhereiamlord")'>Here I Am, Lord</a></li>
-			<li><a href="#" onclick='showAPP("APPhereiamtoworship")'>Here I Am To Worship</a></li>
-			<li><a href="#" onclick='showAPP("APPholyground")'>Holy ground</a></li>
-			<li><a href="#" onclick='showAPP("APPholyishisname")'>Holy Is His Name</a></li>
-			<li><a href="#" onclick='showAPP("APPholyisthelord")'>Holy Is The Lord</a></li>
-			<li><a href="#" onclick='showAPP("APPiam")'>I Am</a></li>
-			<li><a href="#" onclick='showAPP("APPiamthebreadoflife")'>I Am The Bread Of Life</a></li>
-			<li><a href="#" onclick='showAPP("APPiamthevine")'>I Am The Vine</a></li>
-			<li><a href="#" onclick='showAPP("APPifgodisforus")'>If God Is For Us</a></li>
-			<li><a href="#" onclick='showAPP("APPigivemyselfaway")'>I Give Myself Away</a></li>
-			<li><a href="#" onclick='showAPP("APPihavedecidedtofollowjesus")'>I Have Decided to Follow Jesus</a></li>
-			<li><a href="#" onclick='showAPP("APPiloveyoulord")'>I Love You Lord</a></li>
-			<li><a href="#" onclick='showAPP("APPinthisplace")'>In This Place</a></li>
-			<li><a href="#" onclick='showAPP("APPisurrender")'>I Surrender</a></li>
-			<li><a href="#" onclick='showAPP("APPleadmelord")'>Lead Me Lord</a></li>
-			<li><a href="#" onclick='showAPP("APPletthefirefall")'>Let The Fire Fall</a></li>
-			<li><a href="#" onclick='showAPP("APPlettheriverflow")'>Let The River Flow</a></li>
-			<li><a href="#" onclick='showAPP("APPlordiliftyournameonhigh")'>Lord I Lift Your Name On High</a></li>
-			<li><a href="#" onclick='showAPP("APPlordineedyou")'>Lord I Need You</a></li>
-			<li><a href="#" onclick='showAPP("APPmealprayer")'>Meal Prayer</a></li>
-			<li><a href="#" onclick='showAPP("APPopentheeyesofmyheart")'>Open The Eyes Of My Heart</a></li>
-			<li><a href="#" onclick='showAPP("APPonebreadonebody")'>One Bread, One Body</a></li>
-			<li><a href="#" onclick='showAPP("APPpraiseyouinthisstorm")'>Praise You In This Storm</a></li>
-			<li><a href="#" onclick='showAPP("APPpreparetheway")'>Prepare The Way</a></li>
-			<li><a href="#" onclick='showAPP("APPrevelationsong")'>Revelation Song</a></li>
-			<li><a href="#" onclick='showAPP("APPservantsong")'>Servant Song</a></li>
-			<li><a href="#" onclick='showAPP("APPshepherdmeogod")'>Shepherd Me, O God</a></li>
-			<li><a href="#" onclick='showAPP("APPtheheartofworship")'>The Heart Of Worship</a></li>
-			<li><a href="#" onclick='showAPP("APPtheservantsong")'>The Servant Song</a></li>
-			<li><a href="#" onclick='showAPP("APPtheyllknowwearechristians")'>They'll Know We Are Christians</a></li>
-			<li><a href="#" onclick='showAPP("APPtradingmysorrows")'>Trading My Sorrows</a></li>
-			<li><a href="#" onclick='showAPP("APPwefalldown")'>We Fall Down</a></li>
-			<li><a href="#" onclick='showAPP("APPweshallreceive")'>We Shall Receive</a></li>
-			<li><a href="#" onclick='showAPP("APPwhoami")'>Who Am I</a></li>
-			<li><a href="#" onclick='showAPP("APPwillingservant")'>Willing Servant</a></li>
-			<li><a href="#" onclick='showAPP("APPyouaremine")'>You Are Mine</a></li>
-			<li><a href="#" onclick='showAPP("APPyouknowwhoiam")'>You Know Who I Am</a></li><br /><br /><br /><br />
-		</ol>
-	</div>
-	<form>
-		<section id="main-container">
-			<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="0" width="0">
-				<symbol id="hamburger" width="24" height="24" viewBox="0 0 24 24">
-					<path d="M24 6h-24v-4h24v4zm0 4h-24v4h24v-4zm0 8h-24v4h24v-4z"/>
-				</symbol>
-			</svg>
-			<div class="w3-overlay w3-animate-opacity" onclick="closeNav()" id="myOverlay"></div>
-			<div style="margin-left:0px; margin-right:0px; padding-left:10px; padding-right:10px;">
-				<div id="APPsplash" name="APP">
-					<center>
-						<h1>
-							<sub>&#9835;</sub>
-							<sup>&#9835;</sup>
-							<i>SongSetUp</i>
-							<sub>&#9835;</sub>
-							<sup>&#9835;</sup>
-						</h1>
-						<span id="ver" class="tny"></span>
-						<p class="sml">&copy; 2016, 2018, JOHNNY G. McCRACKEN.<br />
-							<a href="mailto:j.g.mccracken65%40gmail.com?body=Greetings,%20&subject=SongSetUp%20v1.45c">j.g.mccracken65&#64;gmail.com</a>.
-							<br />
-							All rights reserved.
-						</p>
-						<p class="w300 tny lft">All lyrics used as examples by this program are the property of their respective owner/copyright holders.<br />
-							<br />This application is offered by the author strictly as a "proof of concept" example, and makes no claims as to its fitness for use.This application is free to use as long as proper recognition is given to its contributors and their notices are maintained.<br /><br />DEVICE: Samsung / Android 6.0.1<br />
-							<br />Special thanks to W3Schools.com for the w3.js library.<br />
-							<br />Let us sing and make a joyful noise to give thanks, praise and glory to our God.<br />
-							<br /><i>Praying to God is good, singing to God is praying twice.</i>
-						</p>
-					</center>
-				</div>
-				<div id="APPhelp" name="APP">
-					<h3>Settings</h3>
-					<fieldset>
-						<legend>Song Set Help</legend>
-						To create a song set:
-						<ol>
-							<li>Tap menu button at upper left.</li>
-							<li>Enter desired song numbers in the box.<br />(no numbers less than 1 or greater than <span id="limit"></span>)</li>
-							<li>Put a comma (,) dot (.) or space ( ) between each song number.</li>
-							<li>Press "OK"</li>
-						</ol>
-						<span style="margin-left:25px;">
-							<b>Example:</b> 6,4,11,26,22,31 &ensp;(default)
-						</span><br />
-						<br />
-						<b>Tip:</b> Lyric sheets for "Singles" or "Sets" may be printed directly from the browser.
-					</fieldset>
-					<br />
-					<fieldset>
-						<legend>Song Properties</legend>
-						<input type="checkbox" id="copyrights" name="copyrights" checked="true" onchange="credits=this.checked" /><label for="copyrights">Display copyright information.</label><br />
-					</fieldset>
-					<br />
-					<fieldset>
-						<legend>Song Set Properties <gray>(screen only)</gray></legend>
-						<select id="songspace" onchange="ssu.spacer()">
-							<option selected>1</option><option>2</option><option>3</option>
-							<option>4</option>
-							<option>5</option>
-							<option>6</option>
-							<option>7</option>
-							<option>8</option>
-						</select><label for="songspace"> space between songs (in inches).</label>
-						<br />
-					</fieldset>
-					<br />
-					<fieldset>
-						<legend>Font &amp; Background Colors <gray>(beta)</gray></legend>
-						<div id="testbody" style="width:97%;">
-							To set a gradient on the background:
-							<ol>
-								<li>Use the color buttons to change gradient colors.</li>
-								<li>Tap an arrow button to preview the gradient's fill.</li>
-								<li>Press "OK"</li>
-							</ol>
-							<center>
-							<table id="gradienteditor" cellspacing="3" cellpadding="0" border="0">
-								<tr>
-									<td class="bge" colspan="3" style="border:none; padding:0px; background:none; height:38px;">
-										<input id="gradientcolor1" type="color" name="favcolor" value="#E6E6FF" onchange="setSampleColors(); setBackgroundColorOnly()" title="Set background color" /> 
-										<input id="gradientcolor2" type="color" name="favcolor" value="#FFFFDB" onchange="setSampleColors(); bgChange()" title="Set gradient color" />
-									</td>
-								</tr>
-								<tr>
-									<td class="bge" id="_315deg" name="gradientdir" onclick="setGradientDirection(this.id)">&#8662;</td>
-									<td class="bge" id="_0deg"   name="gradientdir" onclick="setGradientDirection(this.id)">&#8657;</td>
-									<td class="bge" id="_45deg"  name="gradientdir" onclick="setGradientDirection(this.id)">&#8663;</td>
-								</tr>
-								<tr>
-									<td class="bge" id="_270deg" name="gradientdir" onclick="setGradientDirection(this.id)">&#8656;</td>
-									<td class="bge" id="undo" onclick="setToBG()">APPLY</td>
-									<td class="bge" id="_90deg" name="gradientdir" onclick="setGradientDirection(this.id)">&#8658;</td>
-								</tr>
-								<tr>
-									<td class="bge" id="_225deg" name="gradientdir" onclick="setGradientDirection(this.id)">&#8665;</td>
-									<td class="bge" id="_180deg" name="gradientdir" onclick="setGradientDirection(this.id)">&#8659;</td>
-									<td class="bge" id="_135deg" name="gradientdir" onclick="setGradientDirection(this.id)">&#8664;</td>
-								</tr>
-								<tr>
-									<td class="rem" colspan="3" onclick="bgRemove()">REMOVE</td>
-								</tr>
-							</table>
-							<br />
-							</center>
-							<b>Tip:</b> Set both buttons to the same color for a single color background (backgrounds do not print).<br />
-							<br />
-							<hr />
-							<br />
-							To change the "verse" or "chorus" colors:
-							<ol>
-								<li>Tap color buttons to change the colors.</li>
-								<li>After the color editor opens make a selection.</li>
-								<li>Press the "&check;", "X", "Cancel" or "OK" button.</li>
-							</ol>
-							<center>
-								<p name="fontsample">
-									This is the first line of the VERSE.<br />
-									This is the second line.<br />
-									This is the third line.<br />
-									This is the fourth line.<br />
-									This is the fifth line.
-								</p>
-								<p name="fontsample" class="chorus">
-									<b>This is the first line of the CHORUS.<br />
-									This is the second line.<br />
-									This is the third line.<br />
-									This is the fourth line.</b>
-								</p>
-							</center>
-							<table align="center" cellspacing="3" cellpadding="0" style="width:auto; border-colapse:colapse;">
-								<tr>
-									<th><b>Verse</b></th>
-									<th> </th>
-									<th><b>Chorus</b></th>
-								<tr>
-								<tr>
-									<td align="center">
-										<input id="versecolor" name="fontcolors" type="color" value="#000000" onchange="changeVerseColor(this.value);" title="Set verse color" />
-									</td>
-									<td class="rem" id="fontz" align="center" onclick="changeLyricColors();">
-										&nbsp;APPLY&nbsp;
-									</td>
-									<td align="center">
-										<input id="choruscolor" name="fontcolors" type="color" value="#0000FF" onchange="changeChorusColor(this.value);" title="Set chorus color" />
-									</td>
-								</tr>
-								<tr>
-									<td class="rem" colspan="3" onclick="defaultLyricColors();">
-										REMOVE
-									</td>
-								</tr>
-							</table>
-							<br />
-							<b>Tip:</b> Preview the background first using the arrow buttons above. Note how the "verse" and "chorus" colors appear against the background before applying new selections.<br />
-							<br />
-							<b>WARNING! Do not make "Verse" or "Chorus" color the same as the background color!</b> (Reload to correct)
-							<br />
-						</div>
-					</fieldset>
-					<br />
-					<fieldset>
-						<legend>Manage Set's <gray>(under developement)</gray></legend>
-						PRIORITY: LOW<br />
-						This feature will allow the user to maintain a Set-List locally (without cookies) and to load or edit it at any time.
-					</fieldset>
-					<br />
-				</div>
+<div id="APP10000reasons" name="APP"><h3 class="pbba">10,000 Reasons (Bless The Lord)</h3><br /><table align="center" cellspacing="0" cellpadding="0"><tr><td><p class="hi chorus">Bless the Lord, Oh my soul,<br />Oh my soul<br />Worship His Holy name<br /></p><p class="hi chorus">Sing like never before,<br />Oh my soul,<br />I'll worship Your Holy name<br /><br /></p><p class="hi">The sun comes up<br />It's a new day dawning<br />It's time to sing<br />Your song again</p><p class="hi">Whatever may pass<br />And whatever lies before me<br />Let me be singing<br />When the evening comes</p><p class="tac chorus">Chorus</p><p class="hi">You're rich in love<br />And You're slow to anger<br />Your name is great<br />And Your heart is kind</p><p class="hi">For all Your goodness<br />I will keep on singing<br />Ten thousand reasons<br />For my heart to find</p><p class="tac chorus">Chorus</p><p class="hi">And on that day<br />When my strength is failing<br />The end draws near<br />And my time has come</p><p class="hi">Still my soul will sing<br />Your praise unending<br />Ten thousand years<br />And then forevermore</p><p class="tac chorus">Chorus</p><p class="hi chorus">Yes, I will worship Your Holy name<br />I will worship Your Holy name</p><p class="hi chorus">Yes, I will worship Your Holy name</p><br /><p class="hi chorus">Lord, I will worship Your Holy name</p></td></tr></table><p class="credits">Songwriters: JONAS MYRIN / MATT REDMAN.<br />&copy; 2011 sixstepsrecords / Sparrow Records.<br />From the Album: 10,000 Reasons.<br />www.sixstepsrecords.com / www.sparrowrecords.com.</p><br /></div>
 
-<div id="APP10000reasons" name="APP"><h3 class="pbba">10,000 Reasons (Bless The Lord)</h3><br /><table align="center" cellspacing="0" cellpadding="0"><tr><td><p class="hi chorus">Bless the Lord, Oh my soul,<br />Oh my soul<br />Worship His Holy name<br /></p><p class="hi chorus">Sing like never before,<br />Oh my soul,<br />I'll worship Your Holy name<br /><br /></p><p class="hi">The sun comes up<br />It's a new day dawning<br />It's time to sing<br />Your song again</p><p class="hi">Whatever may pass<br />And whatever lies before me<br />Let me be singing<br />When the evening comes</p><p class="tac chorus">Chorus</p><p class="hi">You're rich in love<br />And You're slow to anger<br />Your name is great<br />And Your heart is kind</p><p class="hi">For all Your goodness<br />I will keep on singing<br />Ten thousand reasons<br />For my heart to find</p><p class="tac chorus">Chorus</p><p class="hi">And on that day<br />When my strength is failing<br />The end draws near<br />And my time has come</p><p class="hi">Still my soul will sing<br />Your praise unending<br />Ten thousand years<br />And then forevermore</p><p class="tac chorus">Chorus</p><p class="hi chorus">Yes, I will worship Your Holy name<br />I will worship Your Holy name</p><p class="hi chorus">I will worship Your Holy name</p><br /><p class="hi chorus">Lord, I will worship Your Holy name<br /><br /></p></td></tr></table><p class="credits">Songwriters: JONAS MYRIN / MATT REDMAN.<br />&copy; 2011 sixstepsrecords / Sparrow Records.<br />From the Album: 10,000 Reasons.<br />www.sixstepsrecords.com / www.sparrowrecords.com.</p><br /></div>
+<div id="APPallwhoarethirsty" name="APP"><h3 class="pbba">All Who Are Thirsty</h3><center><p>All who are thirsty<br />All who are weak<br />Come to the fountain<br />Dip your heart in the streams of life<br />Let the pain and the sorrow<br />Be washed away<br />In the waves of His mercy<br />As deep cries out to deep<br />We sing:</p><p class="chorus">Come Lord Jesus, come<br />Come Lord Jesus, come<br />Come Lord Jesus, come<br />Come Lord Jesus, come</p><p>(Repeat Verse)</p><p class="chorus">Holy Spirit come<br />Holy Spirit come<br />Holy Spirit come<br />Holy Spirit come</p><p>Come and breathe on us again<br />Come and breathe on us again</p><p>Come and visit us again<br />Come and visit us again</p><p>As deep cries out to deep<br />As deep cries out to deep<br />As deep cries out to deep<br /><br /><span class="chorus">Chorus</span></p><p>Open up the gates...<br />Let the King of Glory in<br />Open up the gates...<br />Let the King of Glory in</p><p class="credits">Brenton Brown<br />&copy; 1998, Vineyard songs.<br />CCLI #2489542</p></center></div>
 
-<div id="APPallwhoarethirsty" name="APP"><h3 class="pbba">All Who Are Thirsty</h3><center><p>All who are thirsty, all who are weak<br />Come to the fountain<br />Dip your heart in the streams of life<br />Let the pain and the sorrow<br />Be washed away<br />In the waves of His mercy<br />As deep cries out to deep<br />We sing:</p><p class="chorus">Come Lord Jesus, come<br />Come Lord Jesus, come<br />Come Lord Jesus, come<br />Come Lord Jesus, come</p><p>(Repeat Verse)</p><p class="chorus">Holy Spirit come<br />Holy Spirit come<br />Holy Spirit come<br />Holy Spirit come</p><p>Come and breathe on us again<br />Come and breathe on us again</p><p>Come and visit us again<br />Come and visit us again</p><p>As deep cries out to deep<br />As deep cries out to deep<br />As deep cries out to deep<br /><br /><span class="chorus">Chorus</span></p><p>Open up the gates...<br />Let the King of Glory in<br />Open up the gates...<br />Let the King of Glory in<br /></p><p class="credits">Brenton Brown<br />&copy; 1998, Vineyard songs.<br />CCLI #2489542</p></center></div>
+<div id="APPamazinggrace" name="APP"><h3 class="pbba">Amazing Grace</h3><br /><table align="center" cellspacing="0" cellpadding="0"><tr><td><p class="hi">Amazing grace! How sweet the sound<br />That saved a wretch like me!<br />I once was lost but now am found<br />Was blind but now I see<br /><br /></p><p class="hi">'Twas grace that taught my heart to fear,<br />And grace my fears relieved;<br />How precious did that grace appear<br />The hour I first belived<br /><br /></p><p class="hi">Through many dangers, toils, and snares<br />I have already come;<br />'Tis grace has brought me safe thus far,<br />And grace will lead me home.<br /><br /></p><p class="hi">The Lord has promised good to me,<br />His word my hope secures;<br />He will my sheild and portion be<br />As long as life endures.<br /><br /></p><p class="hi">When we've been there ten thousand years,<br />Bright shining as the sun,<br />We've no less days to sing God's praise<br />Than when we first begun.<br /><br /></p></td></tr></table><p class="credits">&copy; Public Domain. John Newton<br />All rights reserved. Used with permision.<br />CCLI #2643098</p></div>
 
-<div id="APPamazinggrace" name="APP"><h3 class="pbba">Amazing Grace</h3><br /><table align="center" cellspacing="0" cellpadding="0"><tr><td><p class="hi">Amazing grace! How sweet the sound<br />That saved a wretch; like me!<br />I once was lost, but now am found,<br />Was blind, but now I see<br /><br /></p><p class="hi">'Twas grace that taught my heart to fear,<br />And grace my fears relieved;<br />How precious did that grace appear<br />The hour I first belived!<br /><br /></p><!--p class="hi">Through many dangers, toils, and snares<br />I have already come;<br />'Tis grace has brought me safe thus far,<br />And grace will lead me home.<br /><br /></p--><p class="hi">The Lord has promised good to me,<br />His word my hope secures;<br />He will my sheild and portion be<br />As long as life endures.<br /><br /></p><p class="hi">When we've been there ten thousand years,<br />Bright shining as the sun,<br />We've no less days to sing God's praise<br />Than when we first begun.<br /><br /></p></td></tr></table><p class="credits">&copy; Public Domain. John Newton<br />All rights reserved. Used with permision.<br />CCLI #2643098</p></div>
+<div id="APPbetterthanahallelujah" name="APP"><h3 class="pbba">Better Than a Hallelujah</h3><center><p>God loves a lullaby<br />In a mothers tears in the dead of night<br />Better than a Hallelujah sometimes.</p><p>God loves a drunkards cry,<br />The soldiers plea not to let him die<br />Better than a Hallelujah sometimes.</p><p class="chorus">We pour out our miseries<br />God just hears a melody<br />Beautiful the mess we are<br />The honest cries of breakin' hearts<br />Are better than a Hallelujah.</p><p>The woman holding on for life,<br />The dying man giving up the fight<br />Are better than a Hallelujah sometimes.</p><p>The tears of shame for what's been done,<br />The silence when the words won't come<br />Are better than a Hallelujah sometimes.</p><p class="chorus">Chorus</p><p class="bridge">Better than a church bell ringin',<br />Better than a choir singin' out,<br />singin' out.</p><p class="chorus">Chorus (2x)</p><p>(Better than a Hallelujah sometimes)<br />Better than a Hallelujah<br />(Better than a Hallelujah sometimes)</p><p class="credits">Songwriters: CHAPIN HARTFORD, SARAH HART<br />&copy; Sony/ATV Music Publishing LLC, CAPITOL CHRISTIAN MUSIC GROUP.<br />All rights reserved. For non-commercial use only.</p></center></div>
 
-<div id="APPbetterthanahallelujah" name="APP"><h3 class="pbba">Better Than A Hallelujah</h3><center><p>God loves a lullaby,<br />In a mothers tears in the dead of night,<br />Better than a Hallelujah sometimes.</p><p>God loves a drunkards cry,<br />The soldiers plea not to let him die,<br />Better than a Hallelujah sometimes.</p><p class="chorus">We pour out our miseries,<br />God just hears a melody,<br />Beautiful the mess we are,<br />The honest cries of breakin' hearts<br />Are better than a Hallelujah.</p><p>The woman holding on for life,<br />The dying man giving up the fight,<br />Are better than a Hallelujah sometimes.</p><p>The tears of shame for what's been done,<br />The silence when the words won't come,<br />Are better than a Hallelujah sometimes.</p><p class="chorus">Chorus</p><p class="bridge">Better than a church bell ringin',<br />Better than a choir singin' out,<br />singin' out.</p><p class="chorus">Chorus (2x)</p><p>(Better than a Hallelujah sometimes)<br />Better than a Hallelujah<br />(Better than a Hallelujah sometimes)</p><p class="credits">Songwriters: CHAPIN HARTFORD, SARAH HART<br />&copy; Sony/ATV Music Publishing LLC, CAPITOL CHRISTIAN MUSIC GROUP.<br />All rights reserved. For non-commercial use only.</p></center></div>
+<div id="APPbreathe" name="APP"><h3 class="pbba">Breathe</h3><center><p>This is the air I breathe<br />This is the air I breathe<br />Your holy presence living in me<br /><br />This is my daily bread<br />This is my daily bread<br />Your very Word spoken to me</p></center><table align="center" cellspacing="0" cellpadding="0"><tr><td><p class="hi chorus">And I...<br />I'm desperate for You.</p><p class="hi chorus">And I...<br />I'm lost without You.</p></td></tr></table><center><p>You are the air I breathe<br />You are the air I breathe<br />Your holy presence living in me<br /><br />You are my daily bread<br />You are my daily bread<br />Your very Word spoken to me<br /></p><p class="chorus">Chorus</p><p class="credits">Performed by: MICHAEL W. SMITH.<br />Songwriters: LIAM HOWE, TAHLIAH BARNETT, TIMMAZ ZOLLEYN.<br />&copy; Sony/ATV Music Publishing LLC, Universal Music Publishing Group, BMG RIGHTS MANAGEMENT US, LLC.<br />All rights reserved. For non-commercial use only.</p></center></div>
 
-<div id="APPbreathe" name="APP"><h3 class="pbba">Breathe</h3><center><p>This is the air I breathe<br />This is the air I breathe<br />Your holy presence living in me<br /><br />This is my daily bread<br />This is my daily bread<br />Your very word spoken to me</p></center><table align="center" cellspacing="0" cellpadding="0"><tr><td><p class="hi chorus">And I...<br />I'm desperate for You.</p><p class="hi chorus">And I...<br />I'm lost without You.</p></td></tr></table><center><p>You are the air I breathe<br />You are the air I breathe<br />Your holy presence living in me<br /><br />You are my daily bread<br />You are my daily bread<br />Your very Word spoken to me<br /></p><p class="chorus">Chorus</p><p class="credits">Performed by: MICHAEL W. SMITH.<br />Songwriters: LIAM HOWE, TAHLIAH BARNETT, TIMMAZ ZOLLEYN.<br />&copy; Sony/ATV Music Publishing LLC, Universal Music Publishing Group,<br />BMG RIGHTS MANAGEMENT US, LLC.<br />All rights reserved. For non-commercial use only.</p></center></div>
-
-<div id="APPcityofgod" name="APP"><h3 class="pbba">City Of God</h3><center><p>Awake from your slumber! Arise from your sleep!<br />A new day is dawning for all those who weep.<br /><br />The people in darkness have seen a great light.<br />The Lord of our longing has conquered the night.</p><p class="chorus">Let us build the city of God!<br />May our tears be turned into dancing!<br />For the Lord, our light and our love,<br />has turned the night into day.</p><p>We are sons of the morning; we are daughters of day.<br />The One who has loved us has brightened our way.<br /><br />The Lord of all kindness has called us to be<br />a light for all people, to set their hearts free.<br /></p><p class="chorus">Chorus</p><p class="bridge">God is light; in Him there is no darkness!<br />Let us walk in His light, His children one and all!</p><p>O comfort my people, make gentle your words.<br />Proclaim to My city, the day of her birth.</p><p class="chorus">Chorus</p><p>O city of gladness, now lift your voice.<br />Proclaim the good tidings, that all may rejoice.</p><p class="chorus">Chorus</p><p class="credits">JOHN D. BAXTER<br />&copy; 1981, Daniel L. Schutte and North America Liturgy Resources.<br />All rights reserved. Used with permission.<br />LicenSing Online Reprint License #U4236</p></center></div>
+<div id="APPcityofgod" name="APP"><h3 class="pbba">City Of God</h3><center><p>Awake from your slumber!<br />Arise from your sleep!<br />A new day is dawning<br />for all those who weep.<br /><br />The people in darkness<br />have seen a great light.<br />The Lord of our longing<br />has conquered the night.</p><p class="chorus">Let us build the city of God<br />may our tears be turned into dancing!<br />For the Lord,<br />our light and our love,<br />has turned the night into day.</p><p>We are sons of the morning;<br />we are daughters of day.<br />The One who has loved us<br />has brightened our way.<br /><br />The Lord of all kindness<br />has called us to be<br />a light for all people<br />to set their hearts free.<br /></p><p class="chorus">Chorus</p><p class="bridge">God is light;<br />in Him there is no darkness,<br />let us walk in His light,<br />His children one and all.</p><p>O comfort my people,<br />make gentle your words.<br />Proclaim to My city, the day of her birth.</p><p class="chorus">Chorus</p><p>O city of gladness, now lift your voice.<br />Proclaim the good tidings,<br />that all may rejoice.</p><p class="chorus">Chorus</p><p class="credits">JOHN D. BAXTER<br />&copy; 1981, Daniel L. Schutte and North America Liturgy Resources.<br />All rights reserved. Used with permission.<br />LicenSing Online Reprint License #U4236</p></center></div>
 
 <div id="APPcomenowisthetimetoworship" name="APP"><h3 class="pbba">Come, Now Is The Time To Worship</h3><table align="center" cellspacing="0" cellpadding="0"><tr><td><p class="hi">Come,<br />now is the time to worship.</p><p class="hi">Come,<br />now is the time to give your heart.</p><p class="hi">Come,<br />just as you are to worship.</p><p class="hi">Come,<br />just as you are before your God.</p><p class="hi">Come...<br /><br /></p><p class="hi chorus">One day every tongue will confess<br />You are God.</p><p class="hi chorus">One day every knee will bow.</p><br /><p class="hi chorus">Still the greatest treasure<br />remains for those</p><p class="hi chorus">Who gladly choose You now.</p><p class="tac">(Repeat Verse)</p><p class="tac chorus">Chorus (2x)</p><p class="tac">(Repeat Verse)</p><p class="hi bridge">Come...</p><p class="hi bridge">Come...(just as you are)</p><p class="hi bridge">Come...</p><p class="hi bridge">Come...<br /><br /></p></td></tr></table><center><p class="credits">Words and Music: BRIAN DOERKSEN<br />&copy; 1998, Vineyard Songs (UK/Eire)<br />All rights reserved. Used with permission.<br />CCLI #2643098</p></center></div>
 
@@ -355,15 +53,15 @@ input[type="color"][name="fontcolors"]  {width:65px; height:35px; margin:0px; pa
 
 <div id="APPholyground" name="APP"><h3 class="pbba">Holy Ground</h3><table align="center" cellspacing="0" cellpadding="0"><tr><td><p class="hi">This is holy ground,<br />we're standing on holy ground.</p><p class="hi">For the Lord is present,<br />and where He is, is holy.</p><p class="hi">This is, holy ground,<br />we're standing on holy ground.</p><p class="hi">For the Lord is present<br />and where He is, is holy.<br /><br /></p><p class="hi chorus">We are standing<br />on holy ground.</p><p class="hi chorus">And I know<br />that there are angels<br />&emsp;&emsp;all around.</p><p class="hi chorus">Let us praise<br />Jesus now.</p><p class="hi chorus">We are standing<br />in His presence<br />&emsp;&emsp;on holy ground.<br /><br /></p><p class="hi">These are holy hands,<br />He's given us holy hands.</p><p class="hi">He works through these hands,<br />and so these hands are holy.</p><p class="hi">These are holy hands,<br />He's given us holy hands.</p><p class="hi">He works through these hands,<br />and so these hands are holy.</p><p class="tac chorus">Chorus</p><p class="hi">These are holy lips,<br />He's given us holy lips.</p><p class="hi">He speaks through these lips,<br />and so these lips are holy.</p><p class="hi">These are holy lips,<br />He's given us us holy lips.</p><p class="hi">He speaks through these lips,<br />and so these lips are holy.</p><p class="tac chorus">Chorus</p></td></tr></table><center><p class="credits">CHRISTOPHER BEATTY<br />&copy; Copyright 1982 Birdwing Music<br />CCLI/19526. CCLI License #2643098</p></center></div>
 
-<div id="APPholyishisname" name="APP"><h3 class="pbba">Holy Is His Name</h3><center><p>My soul proclaims the greatness of the Lord,<br />and my spirit exhaults in God my Savior.<br />For He has looked with mercy on my lowliness,<br />And my name will be forever exhaulted.<br />For the mighty God has done great things for me,<br />and His mercy will reach from age to age.<br /></p></center><table align="center" cellspacing="0" cellpadding="0"><tr><td><p class="hi chorus">Holy, holy, holy is His Name.<br />And holy, holy, holy is His Name.</p></td></tr></table><center><p>He has mercy in every generation.<br />He has revealed His power and His glory.<br />He has cast down the mighty in their arrogance,<br />And has lifed up the meek and the lowly.<br />He has come to help His servant Israel;<br />He remembers His promise to our fathers.<br /></p></center><table align="center" cellspacing="0" cellpadding="0"><tr><td><p class="hi chorus">Holy, holy, holy is His Name.<br />And holy, holy, holy is His Name.<br /><br /></p></td></tr></table><p class="credits">Text: Based on Luke 1:46-55; John Michael Talbot, b. 1954.<br />Music: John Michael Talbot<br />Text and Music &copy; 1980, Birdwing Music/BMG Songs. All rights reserved. <br />Administereed by EMI CMG Publishing. Used with permission.<br /></p></center></div>
+<div id="APPholyishisname" name="APP"><h3 class="pbba">Holy Is His Name</h3><center><p>My soul proclaims the greatness of the Lord,<br />and my spirit exhaults in God my Savior.<br />For He has looked with mercy on my lowliness,<br />And my name will be forever exhaulted.<br />For the mighty God has done great things for me,<br />and His mercy will reach from age to age.<br /></p></center><table align="center" cellspacing="0" cellpadding="0"><tr><td><p class="hi chorus">And holy, holy, holy is His Name.<br />And holy, holy, holy is His Name.</p></td></tr></table><center><p>He has mercy in every generation.<br />He has revealed His power and His glory.<br />He has cast down the mighty in their arrogance,<br />And has lifed up the meek and the lowly.<br />He has come to help His servant Israel;<br />He remembers His promise to our fathers.<br /></p></center><table align="center" cellspacing="0" cellpadding="0"><tr><td><p class="hi chorus">And holy, holy, holy is His Name.<br />And holy, holy, holy is His Name.<br /><br /></p></td></tr></table><p class="credits">Text: Based on Luke 1:46-55; John Michael Talbot, b. 1954.<br />Music: John Michael Talbot<br />Text and Music &copy; 1980, Birdwing Music/BMG Songs. All rights reserved. <br />Administereed by EMI CMG Publishing. Used with permission.<br /></p></center></div>
 
 <div id="APPholyisthelord" name="APP"><h3 class="pbba">Holy Is The Lord</h3><center><p>We stand and lift up our hands<br />For the joy of the Lord is our strength<br />We bow down and worship Him now<br />How great how awsome is He<br /><br />And together we sing...<br /></p></center><table align="center" cellspacing="0" cellpadding="0"><tr><td><p class="hi chorus">Holy is the Lord God Almighty<br />The earth is filled with His glory</p><p class="hi chorus">Holy is the Lord God Almighty<br />The earth is filled with His glory</p><p class="hi chorus">The earth is filled with His glory</p></td></tr></table><center><p>And together we sing...<br />Everyone sing...<br /><br /><span class="chorus">Chorus</span><br /></p><p class="bridge">It's rising up all around<br />It's the anthem of the Lord's renown<br />It's rising up all around<br />It's the anthem of the Lord's renown<br />(2x)</p><p>And together we sing...<br />Everyone sing...<br /></p><p class="chorus">Chorus</p><p class="chorus">The earth is filled with his glory!<br /></p><p class="bridge">Holy, holy is the Lord Almighty, holy, holy<br />Holy, holy is the Lord Almighty, holy, holy<br />Holy, holy is the Lord Almighty, holy, holy<br /></p><p class="credits">Performed by: CHRIS TOMLIN / LOUIE GIGLIO<br />Songwriters: PHILLIP DANIEL KRISTIANSON, WILLIAM R. BATSTONE<br />&copy; Universal Music Publishing Group, CAPITOL CHRISTIAN MUSIC GROUP<br />All rights reserved. Used with permission.<br />For non-commercial use only.<br /></p></center></div>
 
-<div id="APPiam" name="APP"><h3 class="pbba">I Am</h3><table align="center" cellspacing="0" cellpadding="0"><tr><td><p class="hi">There's no space that<br> His love can't find reach,</p><p class="hi">There's no place<br />where we can't find peace,</p><p class="hi">There's no end<br />to Amazing Grace,<br /><br /></p><p class="hi">Take me in with<br />Your arms spread wide</p><p class="hi">Take me in like<br />an orphan child</p><p class="hi">Never let me go<br />never leave my side<br /><br /></p><p class="hi chorus">I am, holding on to You,<br />I am, holding on to You.</p><p class="hi chorus">In the middle of the storm,<br />I am holding on,</p><p class="hi chorus">I am!<br /><br /></p><p class="hi">Love like this,<br />Oh my God to find.</p><p class="hi">I am overwhelmed,<br />what a joy divine!</p><p class="hi">Love like this<br />sets our hearts on fire!</p><p class="tac chorus">Chorus</p><p class="hi">This is my<br />Resurrection song</p><p class="hi">This is my<br />Hallelujah come<p class="hi">This is why<br />it's to You I run.<br /><br /></p><p class="hi">There's no space that<br> His love can't find reach,</p><p class="hi">There's no place<br />where we can't find peace,</p><p class="hi">There's no end<br />to Amazing Grace,</p><p class="tac chorus">Chorus</p><p class="credits">Songwriters: DAVID CROWDER / ED CASH.<br />&copy; 2013 sixstepsrecords/Sparrow Records.<br />From the Album: Neon Steeple.<br />www.sixstepsrecords.com / www.sparrowrecords.com.</p></td></tr></table></div>
+<div id="APPiam" name="APP"><h3 class="pbba">I Am</h3><table align="center" cellspacing="0" cellpadding="0"><tr><td><p class="hi">There's no space that<br> His love can't find reach,</p><p class="hi">There's no place<br />where we can't find peace,</p><p class="hi">There's no end<br />to Amazing Grace,<br /><br /></p><p class="hi">Take me in with<br />Your arms spread wide</p><p class="hi">Take me in like<br />an orphan child</p><p class="hi">Never let me go<br />never leave my side<br /><br /></p><p class="hi chorus">I am, holding on to You,<br />I am, holding on to You.</p><p class="hi chorus">In the middle of the storm,<br />I am holding on,</p><p class="hi chorus">I am!<br /><br /></p><p class="hi">Love like this,<br />Oh my God to find.</p><p class="hi">I am overwhelmed,<br />what a joy divine!</p><p class="hi">Love like this<br />sets our hearts on fire!</p><p class="tac chorus">Chorus</p><p class="hi">This is my<br />Resurrection song</p><p class="hi">This is my<br />Hallelujah come</p><p class="hi">This is why<br />it's to You I run.<br /><br /></p><p class="hi">There's no space that<br> His love can't find reach,</p><p class="hi">There's no place<br />where we can't find peace,</p><p class="hi">There's no end<br />to Amazing Grace,</p><p class="tac chorus">Chorus</p><p class="credits">Songwriters: DAVID CROWDER / ED CASH.<br />&copy; 2013 sixstepsrecords/Sparrow Records.<br />From the Album: Neon Steeple.<br />www.sixstepsrecords.com / www.sparrowrecords.com.</p></td></tr></table></div>
 
 <div id="APPiamthebreadoflife" name="APP"><h3 class="pbba">I Am The Bread Of Life</h3><center><p>I am the bread of life<br />You who come to me<br />shall not hunger;<br />and who beleive in me<br />shall not thirst.<br />No one shall come to me<br />Unless the Father beckons.</p><p class="chorus">And I will raise you up,<br />and I will raise you up,<br />and I will raise you up,<br />on the last day.<br /></p><p>The bread that I will give<br />Is my flesh for the life of<br />the world,<br />and if you eat of this bread,<br />you shall live forever,<br />you shall live forever.</p><p class="chorus">Chorus</p><p>Unless you eat<br />of the flesh of the Son of Man,<br />and drink of His blood,<br />and drink of His blood,<br />you shall not have life within you.</p><p class="chorus">Chorus</p><p>I Am the Resurrection,<br />I Am the Life,<br />If you beleive in me;<br />even though you die,<br />you shall live forever.</p><p class="chorus">Chorus</p><p>Yes, Lord, I beleive<br />that You are the Christ,<br />The Son of God,<br />Who has come<br />into the world.</p><p class="chorus">Chorus</p><p class="credits">&copy; 1970, SUZANNE TOOLAN. GIA Publications<br />All rights reserved. Used with permission.<br />LicenSing Online Reprint License #U4236 <br /></p></center></div>
 
-<div id="APPiamthevine" name="APP"><h3 class="pbba">I Am The Vine</h3><br /><table align="center" cellspacing="0" cellpadding="0"><tr><td><p class="hi chorus">I am the vine and you are the branches<br />Live in Me, and you will never die</p><p class="hi chorus">I am the vine and My Father is the keeper<br />Come to Me, let the Spirit bring you life<br /><br /></p></td></tr><tr><td><p class="hi">Like a tree planted by the living waters<br />To stretch its roots into the living stream<br />You will show no distress<br />In the heat of the drought<br />But still bear fruit and live<br /><br /></p><p class="hi chorus tac">Chorus<br /><br /></p><p class="hi">Come to Me, all you heavy ladened<br />My yoke is easy, My burden is light<br />I will raise you up<br />On the wings of an eagle<br />And to God's mountain we'll fly<br /><br /></p><p class="hi chorus tac">Chorus</p><p class="tac"><b>Repeat verse 2</b></p><p class="hi chorus tac">Chorus<br /></p><p class="tac"><b>Come to Me, let the Spirit bring you life<br />Come to Me, let the Spirit bring you life</b><br /><br /></p></td></tr></table><p class="credits">Text: Based on John 15:1-17; John Michael Talbot, b. 1954.<br />Music: John Michael Talbot<br />Text and Music &copy; 1988, Birdwing Music/BMG Songs. All rights reserved.<br />Administereed by EMI CMG Publishing. Used with permission.<br /></p></div>
+<div id="APPiamthevine" name="APP"><h3 class="pbba">I Am The Vine</h3><br /><table align="center" cellspacing="0" cellpadding="0"><tr><td><p class="hi chorus">I am the vine and you are the branches<br />Live in Me, and you will never die</p><p class="hi chorus">I am the vine and My Father is the keeper<br />Come to Me, let the Spirit bring you life<br /><br /></p></td></tr><tr><td><p class="hi">Like a tree planted by the living waters<br />to stretch it roots into the living stream<br />You will show no distress<br />in the heat of the drought<br />But still bear fruit and live<br /><br /></p><p class="hi chorus tac">Chorus<br /><br /></p><p class="hi">Come to Me, all you heavy ladened<br />My yoke is easy, my burden is light<br />I will raise you up<br />on the wings of an eagle<br />And to God's mountain we'll fly<br /><br /></p><p class="hi chorus tac">Chorus</p><p class="tac"><b>Repeat verse 2</b></p><p class="hi chorus tac">Chorus<br /></p><p class="tac"><b>Come to Me, let the Spirit bring you life<br />Come to Me, let the Spirit bring you life</b><br /><br /></p></td></tr></table><p class="credits">Text: Based on John 15:1-17; John Michael Talbot, b. 1954.<br />Music: John Michael Talbot<br />Text and Music &copy; 1988, Birdwing Music/BMG Songs. All rights reserved. <br />Administereed by EMI CMG Publishing. Used with permission.<br /></p></div>
 
 <div id="APPifgodisforus" name="APP"><h3 class="pbba">If God Is For Us</h3><br /><table align="center" cellspacing="0" cellpadding="0"><tr><td><p class="hi chorus">If God is for us, who can be aginst,<br />If the Spirit of God has set us free.</p><p class="hi chorus">If God is for us, who can be aginst,<br />If the Spirit of God has set us free.<br /><br /></p></td></tr><tr><td><p class="hi">I know that nothing in this world<br />Can ever take us from His love.<br /><br /></p><p class="hi chorus tac">Chorus<br /><br /></p><p class="hi">Nothing can take us from His love<br />Poured out in Jesus the Lord.<br /><br /></p><p class="hi chorus tac">Chorus<br /><br /></p><p class="hi">And nothing present or to come<br />Can ever take us from His love.<br /><br /></p><p class="hi chorus tac">Chorus<br /><br /></p><p class="hi">I know that neither death nor life<br />Can ever take us from His love.<br /><br /></p><p class="hi chorus tac">Chorus<br /><br /></p><br /></p></td></tr></table><p class="credits">Text based on Romans 8; John Foley, SJ, b. 1939.<br />Music: John Foley, SJ.<br />Text and Music &copy; 1975, John B. Foley, SJ, and OCP.<br />All rights reserved.</p></div>
 
@@ -417,7 +115,7 @@ input[type="color"][name="fontcolors"]  {width:65px; height:35px; margin:0px; pa
 
 <div id="APPwhoami" name="APP"><h3 class="pbba">Who Am I</h3><center><p>Who am I, that the Lord of all the earth<br />Would care to know my name<br />Would care to feel my hurt?<br /><br />Who am I, that the bright and morning star<br />Would choose to light the way<br />For my ever wandering heart?</p><p class="bridge">Not because of who I am<br />But because of what You've done<br />Not because of what I've done<br />But because of who You are</p><p class="chorus">I am a flower quickly fading<br />Here today and gone tomorrow<br />A wave tossed in the ocean<br />A vapor in the wind<br />Still You hear me when I'm calling<br />Lord, You catch me when I'm falling<br />And You've told me who I am<br />I am Yours</p><p>Who am I, that the eyes that see my sin<br />Would look on me with love<br />And watch me rise again?<br /><br />Who am I, that the voice that calmed the sea<br />Would call out through the rain<br />And calm the storm in me?</p><p class="chorus">Chorus<br />(2x)</p><p>I am Yours<br />I am Yours<br />Whom shall I fear, whom shall I fear?<br />'Cause I am Yours<br />I am Yours</p><p class="credits">Songwriters: JOHN MARK HALL<br />Performed by: Casting Crowns<br />&copy;Sony/ATV Music Publishing LLC, ESSENTIAL MUSIC PUBLISHING,<br />CAPITOL CHRISTIAN MUSIC GROUP</p></center></div>
 
-<div id="APPwillingservant" name="APP"><h3 class="pbba">Willing Servant</h3><br /><table align="center" cellspacing="0" cellpadding="0"><tr><td><p class="hi chorus">I am your willing servant, Lord<br />trusting in Your love</p><p class="hi chorus">For You have done great things for me<br />and holy is Your Name&emsp;2x<br /><br /></p></td></tr><tr><td><p class="hi">God is with me in this place<br />asking me to be<br />A witness of His grace and peace<br />Let it be done to me<br /><br /></p><p class="hi chorus tac">Chorus<br /><br /></p><p class="hi">All I can do is praise Your Name<br />Your goodness is forever<br />You have saved my soul from death<br />Let it be done to me<br /><br /></p><p class="hi chorus tac">Chorus<br /><br /></p><p class="hi">When You call me I will say<br />Let it be done to me<br />You have great things for me<br />Holy is Your Name<br /><br /></p><p class="hi chorus tac">Chorus<br /><br /></p></p></td></tr></table><p class="credits">Text based on ?; ?, b. 19??.<br />Music: ?.<br />Text and Music &copy; 19??, ?, ?.<br />All rights reserved.</p></div>
+<div id="APPwillingservant" name="APP"><h3 class="pbba">Willing Servant</h3><br /><table align="center" cellspacing="0" cellpadding="0"><tr><td><p class="hi chorus">I am your willing servant, Lord<br />trusting in Your love</p><p class="hi chorus">For You have done great things for me<br />and holy is Your Name&emsp;2x<br /><br /></p></td></tr><tr><td><p class="hi">God is with me in this place<br />asking me to be<br />A witness of His grace and peace<br />Let it be done to me<br /><br /></p><p class="hi chorus tac">Chorus<br /><br /></p><p class="hi">All I can do is praise Your Name<br />Your goodness is forever<br />You have saved my soul from death<br />Let it be done to me<br /><br /></p><p class="hi chorus tac">Chorus<br /><br /></p><p class="hi">When You call me I will say<br />Let it be done to me<br />You have great things for me<br />Holy is Your Name<br /><br /></p><p class="hi chorus tac">Chorus<br /><br /></p></td></tr></table><p class="credits">Text based on Romans 8; John Foley, SJ, b. 1939.<br />Music: John Foley, SJ.<br />Text and Music &copy; 1975, John B. Foley, SJ, and OCP.<br />All rights reserved.</p></div>
 
 <div id="APPyouaremine" name="APP"><h3 class="pbba">You Are Mine</h3><center><p>I will come to you in the silence,<br />I will lift from all your fear.<br />You will hear my voice,<br />I claim you as my choice.<br />Be still and know I am here.<br /></p><p>I am hope for all who are helpless,<br />I am the eyes for all who long to see.<br />In the shadow of the night,<br />I will be your light.<br />Come and rest in me.<br /></p><p class="chorus">Do not be afraid, I am with you.<br />I have called you each by name.<br />Come and follow Me,<br />I will bring you home;<br />I love you and you are mine.<br /></p><p>I am the strength for all the despairing,<br />healing for the ones who dwell in shame.<br />All the blind will see,<br />the lame will all run free.<br />And all will know My name.</p><p class="chorus">Chorus</p><p>I am the Word that leads all to freedom,<br />I am the peace the world cannot give.<br />I will call your name,<br />embracing all your pain.<br />Stand up, now walk, and live!<br /></p><p class="chorus">Chorus</p><p class="credits">Words and Music: DAVID HAAS<br />&copy; 1991, GIA Publications, Inc.<br />All rights reserved.<br /></p></center></div>
 
@@ -437,8 +135,7 @@ var w3={};
 w3.hide=function(sel){w3.hideElements(w3.getElements(sel));};
 w3.hideElements=function(elements){var i, l=elements.length; for (i=0; i < l; i++) {w3.hideElement(elements[i]);}};
 w3.hideElement=function(element){w3.styleElement(element, "display", "none");};
-w3.show=function(sel, a){var elements=w3.getElements(sel); if (a) {w3.hideElements(elements);} 
-w3.showElements(elements);};
+w3.show=function(sel, a){var elements=w3.getElements(sel); if (a) {w3.hideElements(elements);} w3.showElements(elements);};
 w3.addStyle=function (sel, prop, val){w3.styleElements(w3.getElements(sel), prop, val);};
 w3.showElements=function(elements){var i, l=elements.length; for (i=0; i < l; i++) {w3.showElement(elements[i]);}};
 w3.showElement=function(element){w3.styleElement(element, "display", "block");};
@@ -449,66 +146,14 @@ w3.addClassElements=function(elements, name){var i, l=elements.length; for (i=0;
 w3.addClassElement=function(element, name){var i, arr1, arr2; arr1=element.className.split(" "); arr2=name.split(" "); for (i=0; i < arr2.length; i++) {if (arr1.indexOf(arr2[i]) == -1) {element.className += " " + arr2[i];}}};
 w3.removeClass=function(sel, name){w3.removeClassElements(w3.getElements(sel), name);};
 w3.removeClassElements=function(elements, name){var i, l=elements.length, arr1, arr2, j; for (i=0; i < l; i++) {w3.removeClassElement(elements[i], name);}};
-w3.removeClassElement=function(element, name){var i, arr1, arr2; arr1=element.className.split(" "); arr2=name.split(" "); for (i=0; i < arr2.length; i++) {while (arr1.indexOf(arr2[i]) > -1) {arr1.splice(arr1.indexOf(arr2[i]), 1);}} 
-element.className=arr1.join(" ");};
-w3.getElements=function(id) {if (typeof id == "object") {return [id];} else {return document.querySelectorAll(id);}};
+w3.removeClassElement=function(element, name){var i, arr1, arr2; arr1=element.className.split(" "); arr2=name.split(" "); for (i=0; i < arr2.length; i++) {while (arr1.indexOf(arr2[i]) > -1) {arr1.splice(arr1.indexOf(arr2[i]), 1);}} element.className=arr1.join(" ");};
+w3.getElements=function(id){if (typeof id == "object") {return [id];} else {return document.querySelectorAll(id);}};
 
 var ssu={};
 ssu.spacer=function(){ssu.spacerheight=document.getElementById("songspace").selectedIndex + 1};
 ssu.spacerheight=1;
 
-var infoarray=[
-["APPsongsetcontainer","Songs: "],
-["APP10000reasons","10,000 Reasons (Bless The Lord)"],
-["APPallwhoarethirsty","All Who Are Thirsty"],
-["APPamazinggrace","Amazing Grace"],
-["APPbetterthanahallelujah","Better Than A Hallelujah"],
-["APPbreathe","Breathe"],
-["APPcityofgod","City Of God"],
-["APPcomenowisthetimetoworship","Come, Now Is The Time To worship"],
-["APPcometothewater","Come To The Water"],
-["APPcompanionsonthejourney","Companions On The Journey"],
-["APPfamilyprayersong","Family Prayer Song"],
-["APPforever","Forever"],
-["APPhailmarygentlewoman","Hail Mary, Gentle Woman"],
-["APPhereiamlord","Here I Am, Lord"],
-["APPhereiamtoworship","Here I Am To Worship"],
-["APPholyground","Holy ground"],
-["APPholyishisname","Holy Is His Name"],
-["APPholyisthelord","Holy Is The Lord"],
-["APPiam","I Am"],
-["APPiamthebreadoflife","I Am The Bread Of Life"],
-["APPiamthevine","I Am The Vine"],
-["APPifgodisforus","If God Is For Us"],
-["APPigivemyselfaway","I Give Myself Away"],
-["APPihavedecidedtofollowjesus","I Have Decided to Follow Jesus"],
-["APPiloveyoulord","I Love You Lord"],
-["APPinthisplace","In This Place"],
-["APPisurrender","I Surrender"],
-["APPleadmelord","Lead Me Lord"],
-["APPletthefirefall","Let The Fire Fall"],
-["APPlettheriverflow","Let The River Flow"],
-["APPlordiliftyournameonhigh","Lord I Lift Your Name On High"],
-["APPlordineedyou","Lord I Need You"],
-["APPmealprayer","Meal Prayer"],
-["APPopentheeyesofmyheart","Open The Eyes Of My Heart"],
-["APPonebreadonebody","One Bread, One Body"],
-["APPpraiseyouinthisstorm","Praise You In This Storm"],
-["APPpreparetheway","Prepare The Way"],
-["APPrevelationsong","Revelation Song"],
-["APPservantsong","Servant Song"],
-["APPshepherdmeogod","Shepherd Me, O God"],
-["APPtheheartofworship","The Heart Of Worship"],
-["APPtheservantsong","The Servant Song"],
-["APPtheyllknowwearechristians","They'll Know We Are Christians"],
-["APPtradingmysorrows","Trading My Sorrows"],
-["APPwefalldown","We Fall Down"],
-["APPweshallreceive","We Shall Receive"],
-["APPwhoami","Who Am I"],
-["APPwillingservant","Willing Servant"],
-["APPyouaremine","You Are Mine"],
-["APPyouknowwhoiam","You Know Who I Am"]
-];
+var infoarray=[["APPsongsetcontainer","Songs: "],["APP10000reasons","10,000 Reasons (Bless The Lord)"],["APPallwhoarethirsty","All Who Are Thirsty"],["APPamazinggrace","Amazing Grace"],["APPbetterthanahallelujah","Better Than A Hallelujah"],["APPbreathe","Breathe"],["APPcityofgod","City Of God"],["APPcomenowisthetimetoworship","Come, Now Is The Time To Worship"],["APPcometothewater","Come To The Water"],["APPcompanionsonthejourney","Companions On The Journey"],["APPfamilyprayersong","Family Prayer Song"],["APPforever","Forever"],["APPhailmarygentlewoman","Hail Mary, Gentle Woman"],["APPhereiamlord","Here I Am, Lord"],["APPhereiamtoworship","Here I Am To Worship"],["APPholyground","Holy ground"],["APPholyishisname","Holy Is His Name"],["APPholyisthelord","Holy Is The Lord"],["APPiam","I Am"],["APPiamthebreadoflife","I Am The Bread Of Life"],["APPiamthevine","I Am The Vine"],["APPifgodisforus","If God Is For Us"],["APPigivemyselfaway","I Give Myself Away"],["APPihavedecidedtofollowjesus","I Have Decided to Follow Jesus"],["APPiloveyoulord","I Love You Lord"],["APPinthisplace","In This Place"],["APPisurrender","I Surrender"],["APPleadmelord","Lead Me Lord"],["APPletthefirefall","Let The Fire Fall"],["APPlettheriverflow","Let The River Flow"],["APPlordiliftyournameonhigh","Lord I Lift Your Name On High"],["APPlordineedyou","Lord I Need You"],["APPmealprayer","Meal Prayer"],["APPopentheeyesofmyheart","Open The Eyes Of My Heart"],["APPonebreadonebody","One Bread, One Body"],["APPpraiseyouinthisstorm","Praise You In This Storm"],["APPpreparetheway","Prepare The Way"],["APPrevelationsong","Revelation Song"],["APPservantsong","Servant Song"],["APPshepherdmeogod","Shepherd Me, O God"],["APPtheheartofworship","The Heart Of Worship"],["APPtheservantsong","The Servant Song"],["APPtheyllknowwearechristians","They'll Know We Are Christians"],["APPtradingmysorrows","Trading My Sorrows"],["APPwefalldown","We Fall Down"],["APPweshallreceive","We Shall Receive"],["APPwhoami","Who Am I"],["APPwillingservant","Willing Servant"],["APPyouaremine","You Are Mine"],["APPyouknowwhoiam","You Know Who I Am"]];
 var spacerheight=1;
 var songset="";
 var defaultList="6,4,11,26,22,31";
@@ -527,7 +172,8 @@ var c3="#000000";
 var c4="#0000FF";
 var bggradient="linear-gradient(" + d + "," + c1 + "," + c2 + ")";
 limit.innerHTML=len;
-ver.innerHTML="version 1." + len + "c"; window.addEventListener("afterprint", ssuOnAfterPrint);
+ver.innerHTML="version 1." + len + "c";
+window.addEventListener("afterprint", ssuOnAfterPrint);
 
 function setToBG(){var gEBI=document.getElementById("main-container"); gEBI.style.background=bggradient;}
 function setBackgroundColorOnly(){var gEBI=document.getElementById("testbody");gEBI.style.background=c1; var gEBI2=document.getElementById("fontbody"); gEBI2.style.background=c1;}
