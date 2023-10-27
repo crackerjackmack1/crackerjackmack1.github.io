@@ -10,14 +10,14 @@
 <style>
 html { font-family: sans; text-align:center; box-sizing:border-box; scroll-behavior:smooth; }
 
-div * { text-align:center; font-size:10pt; }
+div * { text-align:center; }
 div#joyful,
 div#sorrowful,
 div#glorious,
 div#finish,
 div#last,
-div#redFooter { font-size:10pt; display:none; }
-p { font-size:10pt; margin: 10px 2px; padding: 0px; }
+div#redFooter { display:none; }
+p { margin: 10px 2px; padding: 0px; }
 small { font-size:9pt; }
 input[type="button"] {width:25%; height:35px;}
 
@@ -41,7 +41,6 @@ input[type="button"] {width:25%; height:35px;}
 
 /* Modal Content */
 .modal-content {
-  font-size: 10pt;
   position: fixed;
   bottom: 0;
   background-color: #fefefe;
@@ -53,9 +52,9 @@ input[type="button"] {width:25%; height:35px;}
   animation-duration: 0.4s
 }
 
-.modal-body { font-size:15pt; padding: 2px 10px; }
-.modal-footer {font-size:15pt; cursor:pointer; position: absolute; left: 0; bottom: 0; width: 100%; background-color:red; color: white; text-align: center; }
-.redfooter { font-size:15pt; cursor:pointer; position: fixed; left: 0; bottom: 0; width: 100%; background-color: #5cb85c; color: white; text-align: center; }
+.modal-body { padding: 2px 10px; }
+.modal-footer { cursor:pointer; position: absolute; left: 0; bottom: 0; width: 100%; background-color:red; color: white; text-align: center; }
+.redfooter { cursor:pointer; position: fixed; left: 0; bottom: 0; width: 100%; background-color: #5cb85c; color: white; text-align: center; }
 
 /* Add Animation */
 @-webkit-keyframes slideIn {
@@ -448,10 +447,10 @@ input[type="button"] {width:25%; height:35px;}
 <!-- XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX -->
 
     <!-- BEGIN MODAL SECTION -->
-    <div id="addedPrayers" class="modal" style="font-size:15pt;">
-      <div class="modal-content" style="font-size:15pt;">
+    <div id="addedPrayers" class="modal">
+      <div class="modal-content">
 
-        <div class="modal-body" style="font-size:15pt;">
+        <div class="modal-body"">
 		
           <p>
             <b>Páter Nóster</b>,<br />Qui es in cáelis,<br/>
