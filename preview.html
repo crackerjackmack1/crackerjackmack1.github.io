@@ -20,24 +20,27 @@ body {
     /* font-size:10pt; */
 }
 /* small,i {font-size:10px;} */
-/* sup {font-size:6px;} */
 
-/* Header/logo Title */
-.header {
-    height: 350px; 
+
+/* Background Image Window */
+#main-window {
+    height: 350px;
+    background: #1abc9c;
+}
+
+/* Header/Logo Title */
+.header { 
+    position: absolute;
+    left:200px;
+    top:70px;
     padding: 80px;
     text-align: center;
-    /* background: #1abc9c;
-    color: white; */
     color: black;
 }
 
 /* Increase the font size of the heading */
 .header h1 {
     font-size: 2.5rem;
-    position: absolute;
-    left:150px;
-    top:100px;
 }
 
 /* Set the line-height of the paragraph */
@@ -138,12 +141,14 @@ body {
 </head>
 <body>
 
-<div class="header">
-      <h1>My Website</h1>
-      <p>A <b><i>responsive</i></b> website
+<div id="main-window>
+    <div class="header">
+        <h1>My Website</h1>
+        <p>A <b><i>responsive</i></b> website
           <br>built by<br />Johnny McCracken.<br>
           <small>(Best viewed in Chrome)</small>
-      </p>
+        </p>
+    </div>
 </div>
 
 <div class="navbar">
