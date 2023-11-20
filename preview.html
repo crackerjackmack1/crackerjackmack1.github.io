@@ -34,9 +34,18 @@ body {
 
 /* Increase the font size of the heading */
 .header h1 {
-    font-size: 40px;
+    font-size: 2.5rem;
+    position: absolute;
+    left:150px;
+    top:100px;
 }
 
+/* Set the line-height of the paragraph */
+.header p {
+    line-height: 1.15;
+}
+
+    
 /* Sticky navbar - toggles between relative and fixed, depending on the scroll position. It is positioned relative until a given offset position is met in the viewport - then it "sticks" in place (like position:fixed). The sticky value is not supported in IE or Edge 15 and earlier versions. However, for these versions the navbar will inherit default position */
 .navbar {
     overflow: hidden;
@@ -130,13 +139,11 @@ body {
 <body>
 
 <div class="header">
-    <!-- dialog -->
       <h1>My Website</h1>
-      <p style="line-height:2">A <b><i>responsive</i></b> website
+      <p>A <b><i>responsive</i></b> website
           <br>built by<br />Johnny McCracken.<br>
           <small>(Best viewed in Chrome)</small>
       </p>
-    <!-- /dialog -->
 </div>
 
 <div class="navbar">
