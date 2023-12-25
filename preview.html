@@ -25,11 +25,13 @@ sup {
 /* Background Image Window */
 #main-window {
     height: auto;
+    /*
     background: #1abc9c;
     background-image: url("images/Creation_of_Man.png") no-repeat center;
     background-position-y: top;
     background-size: contain;
     background-attachment: scroll;
+    */
 }
     
 /* Sticky navbar - toggles between relative and fixed, depending on the scroll position. It is positioned relative until a given offset position is met in the viewport - then it "sticks" in place (like position:fixed). The sticky value is not supported in IE or Edge 15 and earlier versions. However, for these versions the navbar will inherit default position */
@@ -125,7 +127,9 @@ sup {
 </head>
 <body>
 
-<div id="main-window"></div>
+<div id="main-window">
+    <img src="images/Creation_of_Man.png">
+</div>
 
 <div class="navbar">
   <a href="https://crackerjackmack1.github.io/" class="active">Home</a>
