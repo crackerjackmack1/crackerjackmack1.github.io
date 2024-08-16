@@ -10,31 +10,35 @@
 <meta name="description" content="Pray the Rosary in Latin" />
 <meta name="version" content="1.2" />
 
-<!-- link rel="stylesheet" href="w3.css" -->
-
 <style>
 html { font-family:sans-serif; text-align:center; box-sizing:border-box; scroll-behavior:smooth; }
-body { margin:0px; padding:0px; }
+body { margin:0px; }
 
-#main { margin:0px; padding:0px; }
-#_0_section { margin-top:0px; display:none; }	/* Preferences */
-#_1_section { margin-top:0px; text-align:center; padding-top:0px; }	/* Startup Prayers */
+#_0_section { margin-top:0px; padding-top:10px; display:none; }	/* Preferences */
+#_1_section { margin-top:0px; padding-top:10px;  text-align:center; }	/* Startup Prayers */
 #_2_section,	/* Joyful Prayers */
 #_3_section,	/* Sortrowful Prayers */
 #_4_section,	/* Glorious Prayers */
 #_5_section,	/* Decades Prayers */
 #_6_section,	/* Finish Prayers */
-#_7_section { text-align:center; padding-top:1em; display:none; }	/* Holy_See Prayers */
+#_7_section { 	/* Papal Intentions */
+	margin-top:0px; 
+	padding-top:10px; 
+	text-align:center; 
+	display:none;
+}
+
 #mysteriesBtnGroup { padding:20px 0px 20px 0px; }
 
 input#joyfulBtn,
 input#sorrowfulBtn,
 input#gloriousBtn { width:90px; }
 
-.redfooter { font-weight:normal; background-color:lightgreen; margin:30px 0px 0px 0px; padding:20px; display:block; }
-.redfooter { color:white;  background-color:red; cursor:pointer; }
+.redfooter { color:white;  background-color:red; cursor:pointer; font-weight:normal; margin:30px 0px 0px 0px; padding:20px; display:block; }
 .backButton { float:left; margin:auto; padding:auto;}
 .nextButton { float:right; margin:auto; padding:auto;}
+
+/* THIS CLASS MAKES EACH MYSTERY DESCRIPTIVE PARAGRAPH A CLICKABLE BUTTON */
 .paragrafBtn { font-size:10.5pt; width:100%; background-color:transparent; border:none; cursor:pointer; }
 
 p { margin:10px; padding:5px; line-height:1.7; }
@@ -56,27 +60,8 @@ blu { font-weight:bold; color:blue;}
 .floatR { text-align:right; display:block; }
 .center { display:block; margin-left:auto; margin-right:auto; }
 .prefsBtn { width:200px; height:40px; }
-/* .prefsBtn:hover { background-color:yellow; border:3px solid black; font-weight:bold; } */
 .instruct { font-size:small; }
 
-/* PLAIN MODAL CSS */ /*XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX */
-
-/* The Modal (background) */
-.modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  padding-top: 100px; /* Location of the box */
-  left: 0; top: 0;
-  width: 80%; /* Full width */
-  height: 80%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-}
-
-/* Modal Content */
-.modal-content { background-color: #fefefe; margin: auto; padding: 20px; border: 1px solid #888; width: 80%; }
 
 /* The Close Button */
 .close { color: #aaaaaa; float: right; font-size: 28px; font-weight: bold; }
@@ -86,22 +71,23 @@ blu { font-weight:bold; color:blue;}
 
 </head>
 
-<body onload="topFunction();">
+<body onload='scrollSectionIntoView("_1_section");'>
 
 <!-- XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX -->
-<div id='main'>
+<!--div id='main' -->
 	
 	<!-- STARTUP SECTION -->
 	<div id="_1_section">
 		
-		<div class="floatR"><gear class="onhover" onclick="closeAllSectionsExcept('_0_section');">&#9881;</gear></div>
+		<div class="floatR">
+			<gear class="onhover" onclick="closeAllSectionsExcept('_0_section');">&#9881;</gear>
+		</div>
 		
 		<h1>Sanctum Rosarium</h1>
 		
 		<hr width="95%" />
 		
 		<p>
-			
 			<b2>Signum Crucis</b2><br>
 			<cross>☩</cross><br>
 			In nómine Pátris,<br>
@@ -116,7 +102,7 @@ blu { font-weight:bold; color:blue;}
 		<!-- INSERT DIVINE PRAISES -->
 		<div id="divinePraises">
 		
-			<hr width="25%" />
+			<hr width="95%" />
 			
 			<p>
 				<b2>Laudes Divinae</b2><br>
@@ -159,7 +145,7 @@ blu { font-weight:bold; color:blue;}
 		<!-- INSERT ACT OF CONTRITION -->
 		<div id="actofContrition">
 		
-			<hr width="25%" />
+			<hr width="95%" />
 			
 			<p>
 				<b2>Actus Contritionis</b2><br>
@@ -191,7 +177,7 @@ blu { font-weight:bold; color:blue;}
 		<!-- INSERT PRAYERS FOR ALL -->
 		<div id="petitionAbrahami">
 		
-			<hr width="25%" />
+			<hr width="95%" />
 			
 			<p>
 				<b2>Oblátio Nostra</b2><br>
@@ -220,7 +206,7 @@ blu { font-weight:bold; color:blue;}
 		<!-- XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX -->
 		
 		<!-- RESUME STARTUP SECTION -->
-		<hr width="25%" />
+		<hr width="95%" />
 		
 		<p>
 			<b2>Symbólum Apostólicum</b2>,<br>
@@ -256,7 +242,7 @@ blu { font-weight:bold; color:blue;}
 			Amen.
 		</p>
 		
-		<hr width="25%" />
+		<hr width="95%" />
 		
 		<p>
 			<b2>Óratio Domínica</b2>,<br>
@@ -277,13 +263,13 @@ blu { font-weight:bold; color:blue;}
 			Amen.
 		</p>
 		
-		<hr width="25%" />
+		<hr width="95%" />
 		
 		<p>
 			<b2>Virtutes enim<br>fidei, spei et caritatis.</b2>
 		</p>
 		
-		<hr width="25%" />
+		<hr width="95%" />
 		
 		<p>
 			<b2>Áve María</b2>,<br>
@@ -300,7 +286,7 @@ blu { font-weight:bold; color:blue;}
 			<small>(x3)</small>
 		</p>
 		
-		<hr width="25%" />
+		<hr width="95%" />
 		
 		<p>
 			<cross>☩</cross><br>
@@ -314,19 +300,19 @@ blu { font-weight:bold; color:blue;}
 			Amen.
 		</p>
 		
-		<hr width="25%" />
+		<hr width="95%" />
 		
 		<p>
-			<b2>Sáncte Ióseph!</b2><br>
+			<b2>Sáncte Ióseph!</b2>,<br>
 			Óra Pro Nóbis!
 		</p>
 		
-		<hr width="25%" />
+		<hr width="95%" />
 		
 		<div id="mysteriesBtnGroup">
 			<h2>Eligére Mysterium</h2>
 			<br>
-			<input id="joyfulBtn" type="button" value="Gaudiósa" onclick="mysteriesFlag='_2_section'; closeAllSectionsExcept(mysteriesFlag);" />
+			<input id="joyfulBtn" 	 type="button" value="Gaudiósa" onclick="mysteriesFlag='_2_section'; closeAllSectionsExcept(mysteriesFlag);" />
 			&ensp;
 			<input id="sorrowfulBtn" type="button" value="Dolorósa" onclick="mysteriesFlag='_3_section'; closeAllSectionsExcept(mysteriesFlag);" />
 			&ensp;
@@ -345,59 +331,69 @@ blu { font-weight:bold; color:blue;}
 		
 		<p class="instruct">Tap the highlighted Mystery to proceed.</p>
 		
-		<hr width="95%" />
+		<button id="_2_20" class="paragrafBtn" onclick="enableBTN('_2_21'); closeAllSectionsExcept('_5_section'); disableBTN(this.id);">
 		
-		<button id="J_20" class="paragrafBtn" onclick="enableBTN('J_21'); closeAllSectionsExcept('_5_section'); disableBTN(this.id);">
+			<hr width="95%" />
+		
 			<p>
 				<b2>I.<br>
-				Prímum mystérium gaudiósum:</b2><br>
+				Prímum Mystérium Gaudiósum:</b2><br>
 				Annuntiatiónem Beátæ Maríæ Vírginis<br>
 				<i>(The Annunciation of the Blessed Virgin Mary)</i>
 			</p>
+			
 		</button>
 		
-		<hr width="25%" />
+		<button id="_2_21" class="paragrafBtn" onclick="enableBTN('_2_22'); closeAllSectionsExcept('_5_section'); disableBTN(this.id);" disabled>
 		
-		<button id="J_21" class="paragrafBtn" onclick="enableBTN('J_22'); closeAllSectionsExcept('_5_section'); disableBTN(this.id);" disabled>
+			<hr width="95%" />
+			
 			<p>
 				<b2>II.<br>
-				Secúndum mystérium gaudiósum:</b2><br>
+				Secúndum Mystérium Gaudiósum:</b2><br>
 				Visitatiónem Beátæ Maríæ Vírginis<br>
 				<i>(The Visitation of the Blessed Virgin Mary)</i>
 			</p>
+			
 		</button>
 		
-		<hr width="25%" />
+		<button id="_2_22" class="paragrafBtn" onclick="enableBTN('_2_23'); closeAllSectionsExcept('_5_section'); disableBTN(this.id);" disabled>
 		
-		<button id="J_22" class="paragrafBtn" onclick="enableBTN('J_23'); closeAllSectionsExcept('_5_section'); disableBTN(this.id);" disabled>
+			<hr width="95%" />
+		
 			<p>
 				<b2>III.<br>
-				Tértium mystérium gaudiósum:</b2><br>
+				Tértium Mystérium Gaudiósum:</b2><br>
 				Nativitátem Dómini nostri Iesu Christi<br>
 				<i>(The Birth of our Lord Jesus Christ)</i>
 			</p>
+			
 		</button>
 		
-		<hr width="25%" />
+		<button id="_2_23" class="paragrafBtn" onclick="enableBTN('_2_24'); closeAllSectionsExcept('_5_section'); disableBTN(this.id);" disabled>
 		
-		<button id="J_23" class="paragrafBtn" onclick="enableBTN('J_24'); closeAllSectionsExcept('_5_section'); disableBTN(this.id);" disabled>
+			<hr width="95%" />
+			
 			<p>
 				<b2>IV.<br>
-				Quartum mystérium gaudiósum</b2><br>
+				Quartum Mystérium Gaudiósum</b2><br>
 				Praesentatio Dómini nostri Iesu Christi<br>
 				<i>(The Presentation of our Lord Jesus Christ)</i>
 			</p>
+			
 		</button>
 		
-		<hr width="25%" />
+		<button id="_2_24" class="paragrafBtn" onclick="closeAllSectionsExcept('_5_section'); fifthMysteryFLAG=true; disableBTN(this.id);" disabled>
 		
-		<button id="J_24" class="paragrafBtn" onclick="closeAllSectionsExcept('_5_section'); fifthMysteryFLAG=true; disableBTN(this.id);" disabled>
+			<hr width="95%" />
+			
 			<p>
 				<b2>V.<br>
-				Quintum mystérium gaudiósum:</b2><br>
+				Quintum Mystérium Gaudiósum:</b2><br>
 				Puer Iesus in Templo Invenitur<br>
 				<i>(The Child Jesus is found in the Temple)</i>
 			</p>
+			
 		</button>
 		
 	</div>
@@ -412,59 +408,69 @@ blu { font-weight:bold; color:blue;}
 		
 		<i class="instruct">Tap the highlighted Mystery to proceed.</i>
 		
-		<hr width="95%" />
+		<button id="_3_20" class="paragrafBtn" onclick="enableBTN('_3_21'); closeAllSectionsExcept('_5_section'); disableBTN(this.id);">
 		
-		<button id="S_20" class="paragrafBtn" onclick="enableBTN('S_21'); closeAllSectionsExcept('_5_section'); disableBTN(this.id);">
+			<hr width="95%" />
+			
 			<p>
 				<b2>I.<br>
-				Prímum mystérium dolorósum:</b2><br>
+				Prímum Mystérium Dolorósum:</b2><br>
 				Agóniam Dómini nostri Iesu Christi in horto<br>
 				<i>(The Agony in the Garden)</i>
 			</p>
+			
 		</button>
+				
+		<button id="_3_21" class="paragrafBtn" onclick="enableBTN('_3_22'); closeAllSectionsExcept('_5_section'); disableBTN(this.id);" disabled>
 		
-		<hr width="25%" />
-		
-		<button id="S_21" class="paragrafBtn" onclick="enableBTN('S_22'); closeAllSectionsExcept('_5_section'); disableBTN(this.id);" disabled>
+			<hr width="95%" />
+			
 			<p> 
 				<b2>II.<br>
-				Secúndum mystérium dolorósum:</b2><br>
+				Secúndum Mystérium Dolorósum:</b2><br>
 				Flagellatiónem Dómini nostri Iesu Christi<br>
 				<i>(The Scourging at the Pillar)</i>
 			</p>
+			
 		</button>
 		
-		<hr width="25%" />
+		<button id="_3_22" class="paragrafBtn" onclick="enableBTN('_3_23'); closeAllSectionsExcept('_5_section'); disableBTN(this.id);" disabled>
 		
-		<button id="S_22" class="paragrafBtn" onclick="enableBTN('S_23'); closeAllSectionsExcept('_5_section'); disableBTN(this.id);" disabled>
+			<hr width="95%" />
+			
 			<p>
 				<b2>III.<br>
-				Tertium mystérium dolorósum:</b2><br>
+				Tertium Mystérium Dolorósum:</b2><br>
 				Coronatiónem spinis Dómini nostri Iesu Christi<br>
 				<i>(The Crowning with Thorns)</i>
 			</p>
+			
 		</button>
 		
-		<hr width="25%" />
+		<button id="_3_23" class="paragrafBtn" onclick="enableBTN('_3_24'); closeAllSectionsExcept('_5_section'); disableBTN(this.id);" disabled>
 		
-		<button id="S_23" class="paragrafBtn" onclick="enableBTN('S_24'); closeAllSectionsExcept('_5_section'); disableBTN(this.id);" disabled>
+			<hr width="95%" />
+		
 			<p>
 				<b2>IV.<br>
-				Quartum mystérium dolorósum:</b2><br>
+				Quartum Mystérium Dolorósum:</b2><br>
 				Portatio Crucis<br>
 				<i>(The Carrying of the Cross)</i>
 			</p>
+			
 		</button>
 		
-		<hr width="25%" />
+		<button id="_3_24" class="paragrafBtn" onclick="closeAllSectionsExcept('_5_section'); fifthMysteryFLAG=true; disableBTN(this.id);" disabled>
 		
-		<button id="S_24" class="paragrafBtn" onclick="closeAllSectionsExcept('_5_section'); fifthMysteryFLAG=true; disableBTN(this.id);" disabled>
+			<hr width="95%" />
+			
 			<p>
 				<b2>V.<br>
-				Quintum mystérium dolorósum:</b2><br>
+				Quintum Mystérium Dolorósum:</b2><br>
 				Crucifixiónem Dómini nostri Iesu Christi<br>
 				<i>(The Crucifixion of Jesus Christ)</i>
 			</p>
+			
 		</button>
 		
 	</div>
@@ -479,59 +485,69 @@ blu { font-weight:bold; color:blue;}
 		
 		<i class="instruct">Tap the highlighted Mystery to proceed.</i>
 		
-		<hr width="95%" />
+		<button id="_4_20" class="paragrafBtn" onclick="enableBTN('_4_21'); closeAllSectionsExcept('_5_section'); disableBTN(this.id);">
 		
-		<button id="G_20" class="paragrafBtn" onclick="enableBTN('G_21'); closeAllSectionsExcept('_5_section'); disableBTN(this.id);">
+			<hr width="95%" />
+			
 			<p>
 				<b2>I.<br>
-				Prímum mystérium gloriósum:</b2><br>
+				Prímum Mystérium Gloriósum:</b2><br>
 				Resurrectiónem Dómini nostri Iesu Christi a mórtuis<br>
 				<i>(The Resurrection)</i>
 			</p>
+			
 		</button>
 		
-		<hr width="95%" />
+		<button id="_4_21" class="paragrafBtn" onclick="enableBTN('_4_22'); closeAllSectionsExcept('_5_section'); disableBTN(this.id);" disabled>
 		
-		<button id="G_21" class="paragrafBtn" onclick="enableBTN('G_22'); closeAllSectionsExcept('_5_section'); disableBTN(this.id);" disabled>
+			<hr width="95%" />
+			
 			<p>
 				<b2>II.<br>
-				Secúndum mystérium gloriósum:</b2><br>
+				Secúndum Mystérium Gloriósum:</b2><br>
 				Ascensiónem Dómini nostri Iesu Christi in cáelum<br>
 				<i>(The Ascension)</i>
 			</p>
+			
 		</button>
 		
-		<hr width="95%" />
+		<button id="_4_22" class="paragrafBtn" onclick="enableBTN('_4_23'); closeAllSectionsExcept('_5_section'); disableBTN(this.id);" disabled>
 		
-		<button id="G_22" class="paragrafBtn" onclick="enableBTN('G_23'); closeAllSectionsExcept('_5_section'); disableBTN(this.id);" disabled>
+			<hr width="95%" />
+			
 			<p>
 				<b2>III.<br>
-				Tértium mystérium gloriósum:</b2><br>
+				Tértium Mystérium Gloriósum:</b2><br>
 				Descensus Spiritus Sancti<br>
 				<i>(The Descent of the Holy Ghost)</i>
 			</p>
+			
 		</button>
 		
-		<hr width="95%" />
+		<button id="_4_23" class="paragrafBtn" onclick="enableBTN('_4_24'); closeAllSectionsExcept('_5_section'); disableBTN(this.id);" disabled>
 		
-		<button id="G_23" class="paragrafBtn" onclick="enableBTN('G_24'); closeAllSectionsExcept('_5_section'); disableBTN(this.id);" disabled>
+			<hr width="95%" />
+			
 			<p>
 				<b2>IV.<br>
-				Quartum mystérium gloriósum:</b2><br>
+				Quartum Mystérium Gloriósum:</b2><br>
 				Assumptiónem Beátæ Maríæ Vírginis in cáelum<br>
 				<i>(The Assumption)</i>
 			</p>
+			
 		</button>
 		
-		<hr width="95%" />
+		<button id="_4_24" class="paragrafBtn" onclick="closeAllSectionsExcept('_5_section'); fifthMysteryFLAG=true; disableBTN(this.id);" disabled>
 		
-		<button id="G_24" class="paragrafBtn" onclick="closeAllSectionsExcept('_5_section'); fifthMysteryFLAG=true; disableBTN(this.id);" disabled>
+			<hr width="95%" />
+			
 			<p>
 				<b2>V.<br>
-				Quintum mystérium gloriósum:</b2><br>
+				Quintum Mystérium Gloriósum:</b2><br>
 				Coronatiónem Beátæ Maríæ Vírginis in cáelum<br>
 				<i>(The Coronation of Blessed Virgin Mary in Heaven)</i>
 			</p>
+			
 		</button>
 		
 	</div>
@@ -562,7 +578,7 @@ blu { font-weight:bold; color:blue;}
 			Amen.
 		</p>
 		
-		<hr width="25%" />
+		<hr width="95%" />
 		
 		<p>
 			<b2>Áve María</b2>,<br>
@@ -570,7 +586,7 @@ blu { font-weight:bold; color:blue;}
 			Dóminus técum.<br>
 			Benedícta tu in muliéribus,<br>
 			et benedíctus frúctus véntris túi,<br>
-			<b2>Iésus!</b2><br>
+			<b2>Iésus.</b2><br>
 			Sáncta María,<br>
 			Máter Déi,<br>
 			óra pro nóbis peccatóribus,<br>
@@ -580,7 +596,7 @@ blu { font-weight:bold; color:blue;}
 			<small>(x10)</small>
 		</p>
 		
-		<hr width="25%" />
+		<hr width="95%" />
 		
 		<p>
 			<cross>☩</cross><br>
@@ -594,26 +610,29 @@ blu { font-weight:bold; color:blue;}
 			Amen.
 		</p>
 		
-		<hr width="25%" />
+		<hr width="95%" />
 		
 		<p>
-			<b2>Óratio Fatímae</b2>,<br>
-			O Mi Iésu,<br>
+			<b2>Óratio Fatímae</b2><br>
+			O Mi <b>Iésus</b>,<br>
 			líbera nos a peccatís nóstris;<br>
 			líbera nos ab ígnibus gehénnae;<br>
 			perdúc in paradísum ómnes animás præsértim<br>
 			eas quae plus misericórdia tua indígent!
 		</p>
 		
-		<hr width="25%" />
+		<hr width="95%" />
 		
 		<p>
 			<b2>Iésus!</b2><br>
 			Deus meus et Rex meus!<br>
-			Benedictus Iésus in Sanctíssimo Altaris Sacraménto.
+			Benedictus Iésus!<br>
+			in<br>
+			Sanctíssimo Altaris Sacraménto!
 		</p>
 		
-		<div id="decadeFooter" class="redfooter" onclick="mysteriesFlag=fifthMysteryFLAG==true?'_6_section':mysteriesFlag; closeAllSectionsExcept(mysteriesFlag);">
+		<div id="decadeFooter" class="redfooter"
+			 onclick="mysteriesFlag=fifthMysteryFLAG==true?'_6_section':mysteriesFlag; closeAllSectionsExcept(mysteriesFlag);">
 			<h5>NEXT</h5>
 		</div>
 		
@@ -657,7 +676,7 @@ blu { font-weight:bold; color:blue;}
 			promissiónibus Chrísti.
 		</p>
 		
-		<hr width="25%" />
+		<hr width="95%" />
 		
 		<p>
 			<b2>Orémus</b2><br>
@@ -675,7 +694,7 @@ blu { font-weight:bold; color:blue;}
 			Amen.
 		</p>
 		
-		<hr width="25%" />
+		<hr width="95%" />
 		
 		<p>
 			<b2>Memorare</b2>,<br>
@@ -696,7 +715,7 @@ blu { font-weight:bold; color:blue;}
 			Amen.
 		</p>
 		
-		<hr width="25%" />
+		<hr width="95%" />
 		
 		<p>
 			<b2>Sancte Michael Archangele</b2>,<br>
@@ -750,7 +769,7 @@ blu { font-weight:bold; color:blue;}
 			Amen.
 		</p>
 		
-		<hr width="25%" />
+		<hr width="95%" />
 		
 		<p>
 			<b2>Áve María</b2>,<br>
@@ -758,7 +777,7 @@ blu { font-weight:bold; color:blue;}
 			Dóminus técum.<br>
 			Benedícta tu in muliéribus,<br>
 			et benedíctus frúctus véntris túi,<br>
-			<b2>Iésus!</b2><br>
+			Iésus.<br>
 			Sáncta María, Máter Déi,<br>
 			óra pro nóbis peccatóribus,<br>
 			nunc,<br>
@@ -766,7 +785,7 @@ blu { font-weight:bold; color:blue;}
 			Amen.<br>
 		</p>
 		
-		<hr width="25%" />
+		<hr width="95%" />
 		
 		<p>
 			<cross>☩</cross><br>
@@ -780,7 +799,7 @@ blu { font-weight:bold; color:blue;}
 			Amen.
 		</p>
 		
-		<hr width="25%" />
+		<hr width="95%" />
 		<!-- PAPAL INTENTIONS -->
 		
 		<!-- XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX -->
@@ -790,13 +809,13 @@ blu { font-weight:bold; color:blue;}
 			<b2>Cor Iesu Sacratissimum!</b2><br>Miserere Nóbis!
 		</p>
 		
-		<hr width="25%" />
+		<hr width="95%" />
 		
 		<p>
 			<b2>Cor Mariae Immaculatum!</b2><br>Óra Pro Nóbis!				
 		</p>
 		
-		<hr width="25%" />
+		<hr width="95%" />
 		
 		<p>
 			<b2>Signum Crucis</b2><br>
@@ -806,14 +825,18 @@ blu { font-weight:bold; color:blue;}
 			et Spíritus Sáncti.<br>
 			Amen.
 		</p>
-		
-		<div id="papalFooter" class="redfooter" onclick="location.reload();">
-			<h5>RESTART</h5>
+		<!-- 
+			CLOSES THE WINDOW WHEN FINISHED
+		-->
+		<div id="papalFooter" class="redfooter" onclick="window.close()">
+			<h5>CLOSE</h5>
 		</div>
 		
 	</div>
 	<!-- END CLOSING PRAYERS -->
 	
+	<!-- XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX -->
+	<!-- XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX -->
 	<!-- XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX -->
 	
 	<!-- PREFERENCES -->
@@ -835,17 +858,12 @@ blu { font-weight:bold; color:blue;}
 				<legend> <b2>Storage Settings</b2> </legend>
 				
 				<input type="radio" id="system_0" name="system_settings" disabled />
-				<label for="system_0"><b>Persistence:</b><i> These settings will be used for every session.</i></label>
-				
-				<hr />
-				
-				<input type="radio" id="system_1" name="system_settings" disabled />
-				<label for="system_1"><b>Sessions Only:</b><i> These settings will be used for this session only.</i></label>
+				<label for="system_0"><b>Persist:</b><i> Save these settings for use in future sessions.</i></label>
 				
 				<hr />
 				
 				<input type="radio" id="system_2" name="system_settings" disabled checked />
-				<label for="system_2"><b>Never Save:</b><i> These settings will never be saved (confirm at each startup).</i></label>
+				<label for="system_2"><b>Reset:</b><i> Configure this page back to its original condition.</i></label>
 				
 			</fieldset>
 			
@@ -866,18 +884,21 @@ blu { font-weight:bold; color:blue;}
 				<hr />
 				
 				<b>Font:&ensp;</b>
+				
 				<input type="radio" id="fontfamily_0" name="font-family" disabled /><label for="fontfamily_0"><b> Serif</b></label>
-				&ensp;
+					&ensp;
 				<input type="radio" id="fontfamily_1" name="font-family" disabled checked /><label for="fontfamily_1"><b> Sans</b></label>
 				
 				<hr />
 				
 				<b>Size:&ensp;&thinsp;</b>
+				
 				<input type="radio" id="size_0" disabled /><label for="size_0"><b> S</b></label>
-				&emsp;
+					&emsp;
 				<input type="radio" id="size_1" checked disabled /><label for="size_1"><b> M</b></label>
-				&emsp;
+					&emsp;
 				<input type="radio" id="size_2" disabled /><label for="size_2"><b> L</b></label>
+			
 			</fieldset>
 			
 		</div>
@@ -897,28 +918,28 @@ blu { font-weight:bold; color:blue;}
 				<hr />
 				
 				<input type="checkbox" id="option_0" name="added-prayers" disabled />
-				<label for="option_0"><b>The Divine Praises:</b><i> to honor and glorify God and prepare to pray the Holy Rosary.</i></label>
+				<label for="option_0"><b>The Divine Praises:</b><i> To honor and glorify God and prepare to pray the Holy Rosary.</i></label>
 				
 				<hr />
 				
 				<input type="checkbox" id="option_1" name="added-prayers" disabled />
-				<label for="option_1"><b>The Act of Contrition:</b><i> to acknowledge ones sinfulness, and humble the spirit.</i></label>
+				<label for="option_1"><b>The Act of Contrition:</b><i> To humble ones spirit, and acknowledge our sinfulness.</i></label>
 				
 				<hr />
 				
 				<input type="checkbox" id="option_2" name="added-prayers" disabled />
-				<label for="option_2"><b>The Petition:</b><i> for conversion of one's family and friends, comfort for the sick and dying, and for release of the souls in pergatory.</i></label>
+				<label for="option_2"><b>The Petition:</b><i> For conversion of one's family and friends, comfort for the sick and dying, and for release of the souls in pergatory.</i></label>
 				
 				<hr />
 				
 				<input type="checkbox" id="option_3" name="added-prayers" disabled />
-				<label for="option_3"><b>The Adorations:</b><i> to glorify Jesus in the Most Holy Sacrament of the Altar (end of decades).</i></label>
+				<label for="option_3"><b>The Adorations:</b><i> To glorify Jesus in the Most Holy Sacrament of the Altar (end of each decade).</i></label>
 				</i>
 				
 				<hr />
 				
 				<input type="checkbox" id="option_4" name="added-prayers" disabled />
-				<label for="option_4"><b>The Intentions:</b><i> offered for the Paraclete to fill Holy Father the Pope, with wisdom and courage.</i></label>
+				<label for="option_4"><b>The Intentions:</b><i> Prayer for the Paraclete to fill Holy Father the Pope, with patience, wisdom, strength and courage.</i></label>
 				
 			</fieldset>
 			
@@ -941,12 +962,10 @@ blu { font-weight:bold; color:blue;}
 	</div>
 	<!-- END PREFERENCES -->
 
-</div>
-<!-- END MAIN -->
-
+<!-- XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX -->
+<!-- XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX -->
 <!-- XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX -->
 
-<!-- JAVASCRIPT -->
 <script>
 
 	/* LOCAL STORAGE CHECK */
@@ -958,12 +977,8 @@ blu { font-weight:bold; color:blue;}
 
 /*XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*/
 
-function topFunction() {
-   document.body.scrollTop = 0; // For Safari
-   document.documentElement.scrollTop = -10; // For Chrome, Firefox, IE and Opera
-}
-
-topFunction();
+function scrollSectionIntoView(id)
+{ document.getElementById(id).scrollIntoView(true); }
 
 /*XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*/
 
@@ -975,16 +990,18 @@ const arrSections=[
 	"_4_section",	//Glorious
 	"_5_section",	//Decades
 	"_6_section",	//Finish
-	"_7_section"	//Holy_See
+	"_7_section"	//Papal_Intentions
 ];
 
 let fifthMysteryFLAG=false;
 
-let prevSectionFLAG="_1_section";
+//let prevSectionFLAG="_1_section";
 
 let arrSelected=[];
 
 let mysteriesFlag="";
+
+let currentMystery="";
 
 let addedPrayers=document.getElementsByName("added-prayers");
 
@@ -1007,19 +1024,22 @@ function getPrayerOptions()
 /*XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*/
 
 function disableBTN(id)
-{ let x=document.getElementById(id); x.disabled=true; }	
+{ document.getElementById(id).style.display="none"; }
 
 function enableBTN(id)
-{ let x=document.getElementById(id); x.disabled=false; }
+{ currentMystery=id; document.getElementById(id).disabled=false; }
 
 /*XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX*/
 
 function closeAllSectionsExcept(id)
 {
 	for (var i=0; i < arrSections.length; i++)
-	{ document.getElementById(arrSections[i]).style.display="none"; }
+	{ 
+		document.getElementById(arrSections[i]).style.display="none"; 
+	}
 	document.getElementById(id).style.display="block";
-	topFunction();
+	
+	scrollSectionIntoView(id);
 }
 
 </script>
