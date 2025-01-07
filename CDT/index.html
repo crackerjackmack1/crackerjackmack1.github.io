@@ -1,0 +1,64 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+table {border-collapse: collapse:}
+tr#headers {background-color:darkblue; color:white; border-color:darkblue;}
+tr#headers th { font-size:12pt; font-weight:bold; border-color:black;}
+td {font-size:16pt; font-weight:bold; text-align:center; width:0.7in;}
+th {font-weight:bold;}
+h3 {text-align:center;}
+red {color:red;}
+green {color:darkgreen;}
+blue {color:blue;}
+</style>
+
+</head>
+<body>
+
+<h3>St. Elizabeth Ann Seton<br />Men's ACTS Retreat</h3>
+
+<table align="center" border="1" cellpadding="5" cellspacing="0">
+	<tr id="headers"><th>DAYS</th><th>HOURS</th><th>MINS</th><th>SECS</th></tr>
+	<tr id="units"><td id="cd-days">0</td><td id="cd-hours">0</td><td id="cd-minutes">0</td><td id="cd-seconds">0</td></tr>
+</table>
+
+<h3>Retreat Starts:<br /><red>February 6, 2025 @ 5:00 p.m.</red></h3>
+
+<script>
+// Set the date we're counting down to
+var countDownDate = new Date("Feb 6, 2025 17:00:00").getTime();
+
+// Update the count down every 1 second
+var x = setInterval(function() {
+
+  // Get today's date and time
+  var now = new Date().getTime();
+    
+  // Find the distance between now and the count down date
+  var distance = countDownDate - now;
+    
+  // Time calculations for days, hours, minutes and seconds
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+  
+  // Output the result to table
+  document.getElementById("cd-days").innerHTML = days
+  document.getElementById("cd-hours").innerHTML = hours
+  document.getElementById("cd-minutes").innerHTML = minutes
+  document.getElementById("cd-seconds").innerHTML = seconds
+    
+  // If the count down is over, write some text 
+  if (distance < 0) {
+    clearInterval(x);
+    document.getElementById("demo").innerHTML = "EXPIRED";
+  }
+}, 1000);
+</script>
+
+</body>
+</html>
